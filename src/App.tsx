@@ -8,9 +8,12 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Loader from './components/UI/Loader';
 import { routes } from './screens/routes';
+import { useRootStore } from './base/hooks/useRootStore';
 
 const App: React.FC = observer(() => {
   const [profileLoading, setProfileLoading] = useState(true);
+
+  const { authStore } = useRootStore();
 
   useEffect(() => {
     // Demo: waiting get user data
@@ -23,16 +26,32 @@ const App: React.FC = observer(() => {
     return <Loader minHeight="100vh" />;
   }
 
-  return (
-    <>
-      <Header />
+  const renderIsAuthStack = () => {
+    return (
+      <>
+        <Header />
 
-      <Routes routes={routes} />
+        <Routes routes={routes} />
 
-      <Footer />
-      <ReactNotification />
-    </>
-  );
+        <Footer />
+        <ReactNotification />
+      </>
+    );
+  };
+
+  const renderIsNotAuthStack = () => {
+    return (
+      <>
+        <Header />
+        
+        <Routes routes={routes} />
+
+        <ReactNotification />
+      </>
+    );
+  };
+
+  return <>{authStore.isAuth ? renderIsAuthStack() : renderIsNotAuthStack()}</>;
 });
 
 export default App;

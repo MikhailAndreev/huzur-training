@@ -1,0 +1,22 @@
+import { fontGenerator } from '../utils/fontGenerator';
+import museoSansCyrl100Woff from '../fonts/MuseoSansCyrl-100/MuseoSansCyrl-100.woff';
+import museoSansCyrl100Eot from '../fonts/MuseoSansCyrl-100/MuseoSansCyrl-100.eot';
+import museoSansCyrl100Ttf from '../fonts/MuseoSansCyrl-100/MuseoSansCyrl-100.ttf';
+import museoSansCyrl300Woff from '../fonts/MuseoSansCyrl-300/MuseoSansCyrl-300.woff';
+import museoSansCyrl300Eot from '../fonts/MuseoSansCyrl-300/MuseoSansCyrl-300.eot';
+import museoSansCyrl300Ttf from '../fonts/MuseoSansCyrl-300/MuseoSansCyrl-300.ttf';
+import museoSansCyrl500Woff from '../fonts/MuseoSansCyrl-500/MuseoSansCyrl-500.woff';
+import museoSansCyrl500Eot from '../fonts/MuseoSansCyrl-500/MuseoSansCyrl-500.eot';
+import museoSansCyrl500Ttf from '../fonts/MuseoSansCyrl-500/MuseoSansCyrl-500.ttf';
+import museoSansCyrl700Woff from '../fonts/MuseoSansCyrl-700/MuseoSansCyrl-700.woff';
+import museoSansCyrl700Eot from '../fonts/MuseoSansCyrl-700/MuseoSansCyrl-700.eot';
+import museoSansCyrl700Ttf from '../fonts/MuseoSansCyrl-700/MuseoSansCyrl-700.ttf';
+import museoSansCyrl900Woff from '../fonts/MuseoSansCyrl-900/MuseoSansCyrl-900.woff';
+import museoSansCyrl900Eot from '../fonts/MuseoSansCyrl-900/MuseoSansCyrl-900.eot';
+import museoSansCyrl900Ttf from '../fonts/MuseoSansCyrl-900/MuseoSansCyrl-900.ttf';
+
+export const museoSansCyrl100 = fontGenerator([museoSansCyrl100Woff, museoSansCyrl100Eot, museoSansCyrl100Ttf], 100);
+export const museoSansCyrl300 = fontGenerator([museoSansCyrl300Woff, museoSansCyrl300Eot, museoSansCyrl300Ttf], 300);
+export const museoSansCyrl500 = fontGenerator([museoSansCyrl500Woff, museoSansCyrl500Eot, museoSansCyrl500Ttf], 500);
+export const museoSansCyrl700 = fontGenerator([museoSansCyrl700Woff, museoSansCyrl700Eot, museoSansCyrl700Ttf], 700);
+export const museoSansCyrl900 = fontGenerator([museoSansCyrl900Woff, museoSansCyrl900Eot, museoSansCyrl900Ttf], 900);

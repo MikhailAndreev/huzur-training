@@ -1,44 +1,6 @@
 import { createMuiTheme } from '@material-ui/core';
-// import { MuseoSansCyrl_100 } from '../fonts/fontsList';
-import MuseoSansCyrl from '../fonts/MuseoSansCyrl-100/MusenoSansCyrl.woff';
 
-// Palette
-interface surface {
-  HighEmphasis: string;
-  MediumEmphasis: string;
-  LowEmphasis: string;
-  Background: string;
-  Stroke: string;
-  Filled: string;
-  Disabled: string;
-  Light: string;
-}
-
-declare module '@material-ui/core/styles/createPalette' {
-  interface Palette {
-    surface: Partial<surface>;
-    prim: Palette['grey'];
-  }
-  interface PaletteOptions {
-    surface: Partial<surface>;
-    prim: PaletteOptions['grey'];
-  }
-}
-
-// Fonts
-const MuseoSansCyrl_100: any = {
-  fontFamily: 'MuseoSansCyrl',
-  fontStyle: 'normal',
-  fontDisplay: 'swap',
-  fontWeight: 400,
-  src: `
-    local('MuseoSansCyrl'),
-    local('MuseoSansCyrl-Regular'),
-    url(${MuseoSansCyrl}) format('woff')
-  `,
-  unicodeRange:
-    'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF',
-};
+import { museoSansCyrl100, museoSansCyrl300, museoSansCyrl500, museoSansCyrl700, museoSansCyrl900 } from './fonts';
 
 export const theme = createMuiTheme({
   breakpoints: {
@@ -63,69 +25,57 @@ export const theme = createMuiTheme({
   },
   typography: {
     fontFamily: "'MuseoSansCyrl', sans-serif",
-    h1: {},
-    h2: {
-      fontStyle: '300',
-      fontSize: 60,
+    h1: {
+      fontSize: 72,
       lineHeight: '72px',
-      letterSpacing: '-0.5px',
+      fontWeight: 600,
+      letterSpacing: '0.5px',
     },
-    h3: {
-      fontStyle: '500',
-      fontSize: 48,
-      lineHeight: '64px',
-    },
+    h2: {},
+    h3: {},
     h4: {
-      fontStyle: '500',
       fontSize: 34,
       lineHeight: '48px',
+      fontWeight: 400,
       letterSpacing: '0.25px',
     },
     h5: {
-      fontStyle: '500',
       fontSize: 26,
       lineHeight: '32px',
+      fontWeight: 400,
+      letterSpacing: '0.25px',
     },
     h6: {
-      fontStyle: '500',
       fontSize: 20,
       lineHeight: '24px',
+      fontWeight: 400,
       letterSpacing: '0.2px',
     },
     body1: {
-      fontStyle: '500',
       fontSize: 16,
       lineHeight: '24px',
+      fontWeight: 400,
       letterSpacing: '0.25px',
     },
     body2: {
-      fontStyle: '500',
       fontSize: 14,
       lineHeight: '24px',
+      fontWeight: 400,
       letterSpacing: '0.25px',
     },
-    subtitle1: {
-      fontStyle: '500',
-      fontSize: 16,
-      lineHeight: '24px',
-      letterSpacing: '0.5px',
-    },
-    subtitle2: {
-      fontStyle: '500',
-      fontSize: 14,
-      lineHeight: '20px',
-      letterSpacing: '0.3px',
-    },
+    subtitle1: {},
+    subtitle2: {},
     button: {
-      fontStyle: '700',
       fontSize: 14,
       lineHeight: '16px',
+      fontWeight: 600,
       letterSpacing: '0.5px',
+      textTransform: 'none',
     },
     caption: {
-      fontStyle: '500',
       fontSize: 12,
       lineHeight: '16px',
+      fontWeight: 400,
       letterSpacing: '0.3px',
     },
   },
@@ -137,9 +87,11 @@ export const theme = createMuiTheme({
           backgroundColor: '#fff !important',
         },
         main: {
+          display: 'flex',
           flex: '1 0 auto',
         },
-        '@font-face': [MuseoSansCyrl_100],
+        // @ts-ignore
+        '@font-face': [museoSansCyrl100, museoSansCyrl300, museoSansCyrl500, museoSansCyrl700, museoSansCyrl900],
         '#root': {
           position: 'relative',
           minHeight: '100vh',
@@ -152,32 +104,98 @@ export const theme = createMuiTheme({
         },
       },
     },
+    MuiPaper: {
+      root: {
+        overflow: 'hidden',
+      },
+      outlined: {
+        borderRadius: 16,
+      },
+    },
+
     MuiButton: {
-      text: {
-        backgroundColor: 'transparent',
-        transition: 'all .4s ease',
+      root: {
+        height: 40,
+        padding: '0 32px',
+        borderRadius: 8,
+      },
+      contained: {
+        boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.05), 0px 3px 8px rgba(0, 0, 0, 0.04), 0px 1px 9px rgba(0, 0, 0, 0.08)',
+      },
+      containedPrimary: {
+        color: '#FFFFFF',
         '&:hover': {
-          color: '',
-          backgroundColor: 'transparent',
+          boxShadow: 'none',
+          opacity: 0.7,
+          backgroundColor: '#FEA789',
+        },
+        '&:focus': {
+          boxShadow: 'none',
+          opacity: 0.7,
+          backgroundColor: '#FEA789',
         },
       },
-      textPrimary: {
-        color: '',
+      containedSecondary: {
+        '&:hover': {},
+        '&:focus': {},
+      },
+      outlined: {
+        boxShadow: 'none',
         '&:hover': {
-          color: '',
-          backgroundColor: 'transparent',
+          opacity: 0.7,
+        },
+      },
+      outlinedPrimary: {
+        border: '1px solid #FD512C',
+        boxShadow: 'none',
+        color: '#FE8157',
+        '&:focus': {},
+      },
+
+      textPrimary: {
+        boxShadow: 'none',
+        '&:hover': {
+          opacity: 0.7,
+        },
+        '&:focus': {
+          opacity: 0.7,
         },
       },
       textSecondary: {
-        color: '',
+        color: '#fff',
+        boxShadow: 'none',
         '&:hover': {
-          color: '',
-          backgroundColor: 'transparent',
+          opacity: 0.7,
         },
       },
     },
-    // MuiAutocomplete: {
-    //   root: {}
-    // }
+
+    MuiFormLabel: {
+      root: {
+        display: 'block',
+        fontSize: 14,
+        lineHeight: '20px',
+        fontWeight: 400,
+        marginBottom: 4,
+        letterSpacing: '0.3px',
+        color: 'rgba(0, 0, 0, 0.6)',
+      },
+    },
+
+    MuiOutlinedInput: {
+      root: {
+        padding: '0 !important',
+        borderRadius: '8px',
+        borderColor: 'rgba(0, 0, 0, 0.12)',
+
+        '& .MuiOutlinedInput-notchedOutline': {
+          borderWidth: '1px !important',
+          borderColor: 'rgba(0, 0, 0, 0.12) !important',
+        },
+        '& .MuiOutlinedInput-input': {
+          padding: '10.5px 12px',
+        },
+      },
+    },
   },
 });
