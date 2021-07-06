@@ -4,4 +4,20 @@ export const useCommonStyles = makeStyles((theme: Theme) => ({
   routerLink: {
     textDecoration: 'none',
   },
+  profilePaperInfo: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flexDirection: 'column',
+    padding: '56px 24px 20px',
+  },
+  profileImgWrap: {
+    width: 128,
+    height: 128,
+    marginBottom: 40,
+  },
+  avatarImg: {
+    width: '100%',
+    height: '100%',
+  },
 }));

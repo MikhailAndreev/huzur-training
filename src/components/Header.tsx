@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Box,
   Container,
@@ -20,10 +20,13 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 
 import { useAllMQ } from '../base/hooks/useAllMQ';
 import { useCommonStyles } from '../styles/commonStyles';
 import logo_white from '../assets/images/logo-white.png';
+import logo from '../assets/images/logo.png';
 
 const links = [
   { title: 'Программа обучения', route: '/education' },
@@ -31,12 +34,24 @@ const links = [
   { title: 'О проекте', route: '/about-project' },
 ];
 
-const Header: React.FC = () => {
+const Header: React.FC = observer(() => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const { isMD } = useAllMQ();
   const commonClasses = useCommonStyles();
+  const [isMainPage, setIsMainPage] = useState<boolean>(false);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log('location', location);
+    if (location.pathname === '/') {
+      setIsMainPage(true);
+    } else {
+      setIsMainPage(false);
+    }
+  }, [location]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -50,14 +65,14 @@ const Header: React.FC = () => {
     console.log('go home');
   };
 
-  const isMainPage = true;
+  // const isMainPage = true;
 
   const renderHeaderLinks = () => {
     return (
       <>
-        {links.map(item => {
+        {links.map((item, index) => {
           return (
-            <Box display="inline-block" mr={{ lg: 2, xl: 4 }}>
+            <Box key={index} display="inline-block" mr={{ lg: 2, xl: 4 }}>
               <Link className={clsx(commonClasses.routerLink, classes.headerLink)} to={item.route}>
                 {item.title}
               </Link>
@@ -83,7 +98,7 @@ const Header: React.FC = () => {
               <Box maxWidth={{ xxs: 200, md: 224 }} pl={4}>
                 <Link to="/" className={commonClasses.routerLink} onClick={handleGoToHome}>
                   <Box width={72} height={64}>
-                    <img width="100%" height="100%" src={logo_white} alt="" />
+                    <img width="100%" height="100%" src={isMainPage ? logo_white : logo} alt="" />
                   </Box>
                 </Link>
               </Box>
@@ -135,7 +150,7 @@ const Header: React.FC = () => {
       </Drawer>
     </>
   );
-};
+});
 
 const drawerWidth = 240;
 

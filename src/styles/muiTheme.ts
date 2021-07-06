@@ -118,6 +118,13 @@ export const theme = createMuiTheme({
         height: 40,
         padding: '0 32px',
         borderRadius: 8,
+        transition: 'all 0.3s ease-out',
+        '&:hover': {
+          boxShadow: 'none',
+          opacity: 0.7,
+          backgroundColor: 'transparent',
+        },
+        '&:focus': {},
       },
       contained: {
         boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.05), 0px 3px 8px rgba(0, 0, 0, 0.04), 0px 1px 9px rgba(0, 0, 0, 0.08)',
@@ -125,14 +132,14 @@ export const theme = createMuiTheme({
       containedPrimary: {
         color: '#FFFFFF',
         '&:hover': {
-          boxShadow: 'none',
-          opacity: 0.7,
-          backgroundColor: '#FEA789',
+          background: 'linear-gradient(0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)), #FE8157',
+          backgroundColor: '#FE8157',
         },
         '&:focus': {
-          boxShadow: 'none',
-          opacity: 0.7,
-          backgroundColor: '#FEA789',
+          // bug with focus, when click on EDIT btn in Profile - btn SAVE become focused and change background
+          // boxShadow: 'none',
+          // opacity: 0.7,
+          // backgroundColor: '#FEA789',
         },
       },
       containedSecondary: {
@@ -165,6 +172,7 @@ export const theme = createMuiTheme({
         color: '#fff',
         boxShadow: 'none',
         '&:hover': {
+          backgroundColor: 'transparent',
           opacity: 0.7,
         },
       },
@@ -184,7 +192,7 @@ export const theme = createMuiTheme({
 
     MuiOutlinedInput: {
       root: {
-        padding: '0 !important',
+        padding: '0',
         borderRadius: '8px',
         borderColor: 'rgba(0, 0, 0, 0.12)',
 
@@ -195,6 +203,21 @@ export const theme = createMuiTheme({
         '& .MuiOutlinedInput-input': {
           padding: '10.5px 12px',
         },
+      },
+    },
+
+    MuiLinearProgress: {
+      root: {
+        height: 8,
+        borderRadius: 10,
+        marginTop: 4,
+      },
+      colorPrimary: {
+        backgroundColor: '#B2DFDB',
+      },
+      bar: {
+        borderRadius: 16,
+        backgroundColor: '#009688',
       },
     },
   },

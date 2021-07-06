@@ -1,9 +1,14 @@
 import { Container, Typography, Box, makeStyles, Theme, Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { observer } from 'mobx-react';
 
 import main_bg from '../../assets/images/main-background.png';
+import { useCommonStyles } from '../../styles/commonStyles';
 
-const MainScreen: React.FC = () => {
+const MainScreen: React.FC = observer(() => {
   const classes = useStyles();
+  const commonClasses = useCommonStyles();
+
   return (
     <Container maxWidth="xl">
       <Box height="100vh">
@@ -19,22 +24,27 @@ const MainScreen: React.FC = () => {
 
           <Box display="flex">
             <Box mr={5}>
-              <Button className={classes.loginBtn} variant="contained" color="primary">
-                Керергә
-              </Button>
+              <Link to="/login" className={commonClasses.routerLink}>
+                <Button className={classes.loginBtn} variant="contained" color="primary">
+                  Керергә
+                </Button>
+              </Link>
             </Box>
 
             <Box>
-              <Button className={classes.registerBtn} variant="text" color="secondary">
-                Теркәлергә
-              </Button>
+              <Link to="/register" className={commonClasses.routerLink}>
+                <Button className={classes.registerBtn} variant="text" color="secondary">
+                  Теркәлергә
+                </Button>
+              </Link>
             </Box>
           </Box>
         </Box>
       </Box>
     </Container>
   );
-};
+});
+
 const useStyles = makeStyles((theme: Theme) => ({
   mainBg: {
     position: 'absolute',
