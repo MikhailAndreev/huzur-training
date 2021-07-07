@@ -132,7 +132,7 @@ export const theme = createMuiTheme({
       containedPrimary: {
         color: '#FFFFFF',
         '&:hover': {
-          background: 'linear-gradient(0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)), #FE8157',
+          background: 'linear-gradient( 0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)), #FE8157',
           backgroundColor: '#FE8157',
         },
         '&:focus': {

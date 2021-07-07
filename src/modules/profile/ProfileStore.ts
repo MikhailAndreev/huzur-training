@@ -4,6 +4,7 @@ import ProfileService from './ProfileService';
 import { Profile } from './models/Profile';
 import { Nullable } from '../../base/types/BaseTypes';
 import { IProfileData } from '../../base/types/ProfileTypes';
+import { userData } from '../../mock/userMockData';
 
 export class ProfileStore {
   loading = false;
@@ -27,27 +28,28 @@ export class ProfileStore {
   };
 
   updateProfile = (data: any) => {
-    const keys = Object.keys(data);
-    for (let i = 0; i < keys.length; i++) {
-      this.profile![keys[i]] = data[keys[i]];
-    }
+    this.setProfileData(data);
   };
 
-  // login = (values: SignInData, history: any) => {
-  //   this.setLoading(true);
+  getProfile = () => {
+    this.setLoading(true);
+    setTimeout(() => {
+      this.setProfileData(userData);
+      // this.profile = userData;
+    }, 1500);
+  };
 
-  //   setTimeout(() => {
-  //     this.setAuth(true);
-  //     this.setLoading(false);
-  //     history.push('/profile');
-  //   }, 2000);
-  // };
+  setProfileData = (data: any) => {
+    const keys = Object.keys(data);
+    let updData: any = {};
+    for (let i = 0; i < keys.length; i++) {
+      updData[keys[i]] = data[keys[i]];
+    }
 
-  // setAuth = (val: boolean) => {
-  //   this.isAuth = val;
-  // };
+    this.profile = updData;
+  };
 
-  // setLoading = (value: boolean) => {
-  //   this.loading = value;
-  // };
+  setLoading = (val: boolean) => {
+    this.loading = val;
+  };
 }

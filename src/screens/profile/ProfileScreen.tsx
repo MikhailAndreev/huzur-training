@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Container, Typography, Box, makeStyles, Theme, Button, Grid, Paper, Switch } from '@material-ui/core';
 import { observer } from 'mobx-react';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -11,9 +12,19 @@ import ProfilePassword from '../../components/Profile/ProfilePassword';
 const ProfileScreen: React.FC = observer(() => {
   const classes = useStyles();
   const commonClasses = useCommonStyles();
+  const [isNotificationEnabled, setIsNotificationEnabled] = useState<boolean>(false);
+
+  // Effects
+  useEffect(() => {
+    // Заполнить профиль данными пользователя
+  }, []);
 
   const handleLogout = () => {
     // profileStore.logout()
+  };
+
+  const handleChecked = (e: any) => {
+    setIsNotificationEnabled(e.target.checked);
   };
 
   return (
@@ -46,8 +57,8 @@ const ProfileScreen: React.FC = observer(() => {
 
                   <Box>
                     <Switch
-                      checked={true}
-                      //   onChange={handleChange}
+                      checked={isNotificationEnabled}
+                      onChange={handleChecked}
                       color="primary"
                       name="notification"
                     />

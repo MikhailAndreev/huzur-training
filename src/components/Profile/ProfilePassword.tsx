@@ -33,7 +33,6 @@ const ProfilePassword: React.FC = observer(() => {
   };
 
   // Renders
-
   const renderEditPassword = () => {
     return (
       <>

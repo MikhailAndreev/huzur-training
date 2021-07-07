@@ -2,6 +2,7 @@ export interface IProfileData {
   [key: string]: any;
   id: number;
   name: string;
+  surname: string;
   email: string;
   photo: string;
   enableNotification: boolean;

@@ -3,7 +3,7 @@ import { makeAutoObservable } from 'mobx';
 import AuthService from './AuthService';
 import { Auth } from './models/Auth';
 import { Nullable } from '../../base/types/BaseTypes';
-import { SignInData } from '../../base/types/AuthTypes';
+import { AuthData } from '../../base/types/AuthTypes';
 
 export class AuthStore {
   loading = false;
@@ -18,7 +18,17 @@ export class AuthStore {
     this.authService = new AuthService();
   }
 
-  login = (values: SignInData, history: any) => {
+  login = (values: AuthData, history: any) => {
+    this.setLoading(true);
+
+    setTimeout(() => {
+      this.setAuth(true);
+      this.setLoading(false);
+      history.push('/profile')
+    }, 2000);
+  };
+  
+  register = (values: AuthData, history: any) => {
     this.setLoading(true);
 
     setTimeout(() => {

@@ -76,7 +76,12 @@ const SubjectCard: React.FC = observer(() => {
                   </Box>
 
                   <Box>
-                    <Button variant="contained" color="primary" endIcon={<ChevronRightIcon />}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      endIcon={<ChevronRightIcon />}
+                      className={classes.watchBtn}
+                    >
                       Смотреть
                     </Button>
                   </Box>
@@ -108,12 +113,11 @@ const useStyles = makeStyles((theme: Theme) => ({
         transform: 'translateY(-2px)',
         borderColor: theme.palette.primary.main,
         boxShadow:
-          '0px 3px 9px rgba(0, 0, 0, 0.08), 0px 1px 22px rgba(0, 0, 0, 0.04), 0px 6px 14px rgba(0, 0, 0, 0.05)',
+          '0px 6px 14px rgba(0, 0, 0, 0.05), 0px 1px 22px rgba(0, 0, 0, 0.04), 0px 3px 9px rgba(0, 0, 0, 0.08)',
       },
       '& .MuiButton-root': {
         opacity: 1,
         visibility: 'visible',
-        transform: 'translate(0,0)',
       },
     },
   },
@@ -140,7 +144,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   imgCol: {
     position: 'relative',
     width: 270,
-    height: 203,
+    height: 205,
     // [theme.breakpoints.down('md')]: {
     //   width: 270,
     //   height: 221,
@@ -165,6 +169,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   contentCol: {
     flex: 1,
+  },
+  watchBtn: {
+    opacity: 0,
+    visibility: 'hidden',
+    transition: 'all .3s ease',
+    transform: 'translate(2px, 2px)',
   },
 }));
 

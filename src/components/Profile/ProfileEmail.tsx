@@ -46,8 +46,8 @@ const ProfileEmail: React.FC = observer(() => {
   };
 
   const handleSave = () => {
-    // action for change profile
-    // store.changeEmail(store.profile?.id, values);
+    profileStore.updateProfile(values);
+    profileStore.setIsEdit('email', false);
   };
 
   // Renders
@@ -55,7 +55,7 @@ const ProfileEmail: React.FC = observer(() => {
     return (
       <>
         <Box width="100%">
-          <Typography variant="body1">exampleexampleexample@mail.ru</Typography>
+          <Typography variant="body1">{profileStore.profile?.email}</Typography>
         </Box>
       </>
     );
@@ -72,7 +72,7 @@ const ProfileEmail: React.FC = observer(() => {
             size="small"
             name="email"
             placeholder="Введите Email"
-            value={values.email}
+            value={values.email || profileStore.profile?.email}
             onChange={handleChange}
             // error={!!store.errorMessages?.email}
             // helperText={store.errorMessages?.email}

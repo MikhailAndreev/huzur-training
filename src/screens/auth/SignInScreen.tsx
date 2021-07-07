@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 import { useHistory } from 'react-router-dom';
 
 import logo from '../../assets/images/logo.png';
-import { SignInData } from '../../base/types/AuthTypes';
+import { AuthData } from '../../base/types/AuthTypes';
 import { useRootStore } from '../../base/hooks/useRootStore';
 import { EmailMaskFormat } from '../../components/UI/Form';
 
@@ -13,8 +13,8 @@ const SignInScreen: React.FC = observer(() => {
   const classes = useStyles();
   const history = useHistory();
 
-  const [values, setValues] = useState<SignInData>({
-    login: '',
+  const [values, setValues] = useState<AuthData>({
+    email: '',
     password: '',
   });
 
@@ -37,6 +37,7 @@ const SignInScreen: React.FC = observer(() => {
       [name]: value,
     });
   };
+
   return (
     <Container maxWidth="xl">
       <Box className={classes.formWrap}>
@@ -46,8 +47,8 @@ const SignInScreen: React.FC = observer(() => {
               <img src={logo} alt="" />
             </Box>
 
-            <Box className={classes.formTitle} mb={4}>
-              <Typography  variant="h6">Керергә аша электрон почта</Typography>
+            <Box mb={4}>
+              <Typography variant="h6">Керергә аша электрон почта</Typography>
             </Box>
 
             <Box width="100%" component="form" onSubmit={handleSubmit}>
@@ -56,9 +57,9 @@ const SignInScreen: React.FC = observer(() => {
                 <TextField
                   fullWidth
                   variant="outlined"
-                  name="login"
-                  placeholder="+7 __ __-__-__"
-                  value={values.login}
+                  name="email"
+                  placeholder="Введите email"
+                  value={values.email}
                   onChange={handleChange}
                   InputProps={{ inputComponent: EmailMaskFormat }}
                 />
@@ -115,13 +116,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     maxWidth: '384px',
     padding: '50px 32px 32px 32px',
-    // marginBottom: theme.spacing(4),
-    [theme.breakpoints.down('md')]: {
-      // padding: theme.spacing(6, 2),
-    },
+    [theme.breakpoints.down('md')]: {},
   },
-
-  formTitle: {},
 }));
 
 export default SignInScreen;

@@ -46,7 +46,9 @@ const ProfileInfo: React.FC = observer(() => {
   };
 
   const handleSave = (event: any) => {
-    //   store.updateProfile(store.profile?.id, form, 'userInfo');
+    const userData = { name: userName, photo: avatar };
+    profileStore.updateProfile(userData);
+    profileStore.setIsEdit('userInfo', false);
   };
 
   const handleCancel = () => {
@@ -66,7 +68,7 @@ const ProfileInfo: React.FC = observer(() => {
         </Box>
 
         <Box mb={2.125}>
-          <Typography variant="h5">Артем</Typography>
+          <Typography variant="h5">{profileStore.profile?.name}</Typography>
         </Box>
 
         <Box>
@@ -97,7 +99,7 @@ const ProfileInfo: React.FC = observer(() => {
             variant="outlined"
             size="small"
             name="name"
-            value={userName}
+            value={userName || profileStore.profile?.name}
             onChange={handleChange}
             placeholder="Введите имя"
             fullWidth

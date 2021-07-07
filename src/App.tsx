@@ -13,14 +13,21 @@ import { useRootStore } from './base/hooks/useRootStore';
 const App: React.FC = observer(() => {
   const [profileLoading, setProfileLoading] = useState(true);
 
-  const { authStore } = useRootStore();
+  const { authStore, profileStore } = useRootStore();
 
+  // Effects
   useEffect(() => {
     // Demo: waiting get user data
     setTimeout(() => {
       setProfileLoading(false);
     }, 400);
   }, []);
+
+  useEffect(() => {
+    if (authStore.isAuth) {
+      profileStore.getProfile();
+    }
+  }, [authStore.isAuth]);
 
   if (profileLoading) {
     return <Loader minHeight="100vh" />;
@@ -43,7 +50,7 @@ const App: React.FC = observer(() => {
     return (
       <>
         <Header />
-        
+
         <Routes routes={routes} />
 
         <ReactNotification />
