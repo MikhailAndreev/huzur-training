@@ -20,4 +20,7 @@ export const useCommonStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     height: '100%',
   },
+  lightOnSurface: {
+    color: 'rgba(0, 0, 0, 0.38)',
+  },
 }));

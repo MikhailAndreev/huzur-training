@@ -1,11 +1,13 @@
-export interface ISubjectItem {
-    id: number;
-    img: string;
-    title: string;
-    shortDescription: string;
-    author: string;
-    progress: {
-        current: number;
-        all: number;
-    };
+interface ICourseProgress {
+  fullCourse: number;
+  current: number;
+}
+
+export interface ICourseItem {
+  id: number;
+  title: string;
+  description: string;
+  progress: ICourseProgress;
+  img: string;
+  author: string;
 }

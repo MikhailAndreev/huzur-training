@@ -17,6 +17,7 @@ const ProfileScreen: React.FC = observer(() => {
   // Effects
   useEffect(() => {
     // Заполнить профиль данными пользователя
+    
   }, []);
 
   const handleLogout = () => {

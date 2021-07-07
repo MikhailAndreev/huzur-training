@@ -8,44 +8,46 @@ import clsx from 'clsx';
 import { useRootStore } from '../../base/hooks/useRootStore';
 import { useCommonStyles } from '../../styles/commonStyles';
 import card_img from '../../assets/images/card_img.png';
+import { ICourseItem } from '../../base/types/SubjectTypes';
 
-const SubjectCard: React.FC = observer(() => {
+export interface ISubjectCardProps {
+  data: ICourseItem;
+  fullWidth?: boolean;
+  showProgress?: boolean;
+  progressPosition?: 'img' | 'descr';
+}
+
+const SubjectCard: React.FC<ISubjectCardProps> = observer(({ data, fullWidth, showProgress, progressPosition }) => {
   const classes = useStyles();
-  const commonclasses = useCommonStyles();
-  const { profileStore } = useRootStore();
-
-  // Handlers
-
-  // Renders
+  const commonClasses = useCommonStyles();
+  const { id, img, title, description, author, progress } = data;
 
   //   const dataProgress = { progress: 75, fullProgress: 100 };
   const dataProgress = {};
 
   return (
-    <Link to="/course" className={clsx(commonclasses.routerLink, classes.link)}>
+    <Link to="/course" className={clsx(commonClasses.routerLink, classes.link)}>
       <Box mb={3} className={classes.paperWrap}>
         <Paper elevation={0} variant="outlined">
           <Grid container>
             <Grid item className={classes.imgCol}>
               <Box className={classes.cardImgWrapper}>
-                {/* data ? img with progress bar : img */}
                 <img src={card_img} alt="" className={classes.img} />
               </Box>
 
-              {/* {showProgress && progressPlace === 'topImg' && ( */}
-              {false && (
+              {showProgress && progressPosition === 'img' && (
                 <Box className={classes.progressWrap}>
                   <Box className={classes.progressBarWrap}>
                     <Typography variant="body1">
-                      {/* {progress.current}/{progress.all} Пройдено уроков */}
-                      16/28 Пройдено уроков
+                      {progress.current}/{progress.fullCourse} Пройдено уроков
                     </Typography>
 
                     <LinearProgress
                       color="secondary"
                       variant="determinate"
-                      //   value={progress.current || progress.all ? (progress.current / progress.all) * 100 : 0}
-                      value={(16 / 28) * 100}
+                      value={
+                        progress.current || progress.fullCourse ? (progress.current / progress.fullCourse) * 100 : 0
+                      }
                     />
                   </Box>
                 </Box>
@@ -54,17 +56,23 @@ const SubjectCard: React.FC = observer(() => {
 
             <Grid item className={classes.contentCol}>
               <Box px={3} pt={3}>
-                {/* data */}
-                {/* if user data ? progressbar */}
                 <Box mb={1.5}>
                   <Typography variant="h6">Гарәп язуы һәм мәдәнияте</Typography>
                 </Box>
                 <Box mb={2}>
-                  {true && (
+                  {showProgress && progressPosition === 'descr' && (
                     <Box mb={1}>
                       <Box className={classes.progressBarWrap}>
-                        <Typography variant="body1">26/68 Пройдено уроков</Typography>
-                        <LinearProgress color="secondary" variant="determinate" value={(28 / 68) * 100} />
+                        <Typography variant="body1">
+                          {progress.current}/{progress.fullCourse}
+                        </Typography>
+                        <LinearProgress
+                          color="secondary"
+                          variant="determinate"
+                          value={
+                            progress.current || progress.fullCourse ? (progress.current / progress.fullCourse) * 100 : 0
+                          }
+                        />
                       </Box>
                     </Box>
                   )}
@@ -72,7 +80,9 @@ const SubjectCard: React.FC = observer(() => {
 
                 <Box display="flex" justifyContent="space-between">
                   <Box>
-                    <Typography>Артем Кулаев</Typography>
+                    <Typography variant="body2" className={commonClasses.lightOnSurface}>
+                      {author}
+                    </Typography>
                   </Box>
 
                   <Box>
@@ -145,18 +155,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: 'relative',
     width: 270,
     height: 205,
-    // [theme.breakpoints.down('md')]: {
-    //   width: 270,
-    //   height: 221,
-    // },
-    // [theme.breakpoints.down('sm')]: {
-    //   width: 200,
-    //   height: 165,
-    // },
-    // [theme.breakpoints.down('xs')]: {
-    //   width: '100%',
-    //   height: 165,
-    // },
   },
   img: {
     width: '100%',

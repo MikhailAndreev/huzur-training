@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Grid, Typography, Box, makeStyles, Theme } from '@material-ui/core';
 
 import ProfileLessonsNumber from './ProfileLessonsNumber';
 import SubjectCard from '../Subject/SubjectCard';
+import { useRootStore } from '../../base/hooks/useRootStore';
+import Loader from '../UI/Loader';
 
 const ProfileContent: React.FC = observer(() => {
+  const { profileStore } = useRootStore();
+
   const classes = useStyles();
+
+  useEffect(() => {
+    profileStore.getUserCourses();
+  }, []);
 
   return (
     <>
@@ -27,9 +35,11 @@ const ProfileContent: React.FC = observer(() => {
         </Box>
 
         <Box display="flex" flexDirection="column" alignItems="center">
-          {[1, 2, 3].map((item: any) => (
-            <SubjectCard />
-          ))}
+          {profileStore.loading && <Loader minHeight={150} />}
+          {profileStore.userCourses &&
+            profileStore.userCourses.map((data: any) => (
+              <SubjectCard data={data} progressPosition="descr" showProgress />
+            ))}
         </Box>
       </Box>
     </>

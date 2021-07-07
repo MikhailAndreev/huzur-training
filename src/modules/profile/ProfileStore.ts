@@ -4,7 +4,7 @@ import ProfileService from './ProfileService';
 import { Profile } from './models/Profile';
 import { Nullable } from '../../base/types/BaseTypes';
 import { IProfileData } from '../../base/types/ProfileTypes';
-import { userData } from '../../mock/userMockData';
+import { userData, userCourses } from '../../mock/userMockData';
 
 export class ProfileStore {
   loading = false;
@@ -15,6 +15,7 @@ export class ProfileStore {
   };
 
   profile: Nullable<IProfileData> = null;
+  userCourses: Nullable<any> = null;
 
   private profileService: ProfileService;
 
@@ -35,7 +36,15 @@ export class ProfileStore {
     this.setLoading(true);
     setTimeout(() => {
       this.setProfileData(userData);
-      // this.profile = userData;
+      this.setLoading(false);
+    }, 1500);
+  };
+
+  getUserCourses = () => {
+    this.setLoading(true);
+    setTimeout(() => {
+      this.setUserCourses(userCourses);
+      this.setLoading(false);
     }, 1500);
   };
 
@@ -47,6 +56,10 @@ export class ProfileStore {
     }
 
     this.profile = updData;
+  };
+
+  setUserCourses = (data: any) => {
+    this.userCourses = data;
   };
 
   setLoading = (val: boolean) => {
