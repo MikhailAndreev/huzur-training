@@ -24,18 +24,28 @@ export class AuthStore {
     setTimeout(() => {
       this.setAuth(true);
       this.setLoading(false);
-      history.push('/profile')
+      history.push('/profile');
     }, 2000);
   };
-  
+
   register = (values: AuthData, history: any) => {
     this.setLoading(true);
 
     setTimeout(() => {
       this.setAuth(true);
       this.setLoading(false);
-      history.push('/profile')
+      history.push('/profile');
     }, 2000);
+  };
+
+  logout = (history: any) => {
+    this.setLoading(true);
+
+    setTimeout(() => {
+      this.setAuth(false);
+      this.setLoading(false);
+      history.push('/');
+    }, 1500);
   };
 
   setAuth = (val: boolean) => {

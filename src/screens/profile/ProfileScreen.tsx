@@ -2,27 +2,27 @@ import { useState, useEffect } from 'react';
 import { Container, Typography, Box, makeStyles, Theme, Button, Grid, Paper, Switch } from '@material-ui/core';
 import { observer } from 'mobx-react';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { useHistory } from 'react-router-dom';
 
 import { useCommonStyles } from '../../styles/commonStyles';
 import ProfileContent from '../../components/Profile/ProfileContent';
 import ProfileInfo from '../../components/Profile/ProfileInfo';
 import ProfileEmail from '../../components/Profile/ProfileEmail';
 import ProfilePassword from '../../components/Profile/ProfilePassword';
+import { useRootStore } from '../../base/hooks/useRootStore';
+import LoaderButton from '../../components/UI/LoaderButton';
 
 const ProfileScreen: React.FC = observer(() => {
+  const { authStore } = useRootStore();
   const classes = useStyles();
   const commonClasses = useCommonStyles();
   const [isNotificationEnabled, setIsNotificationEnabled] = useState<boolean>(false);
+  const history = useHistory();
 
   // Effects
   useEffect(() => {
     // Заполнить профиль данными пользователя
-    
   }, []);
-
-  const handleLogout = () => {
-    // profileStore.logout()
-  };
 
   const handleChecked = (e: any) => {
     setIsNotificationEnabled(e.target.checked);
@@ -69,16 +69,17 @@ const ProfileScreen: React.FC = observer(() => {
             </Box>
 
             <Box>
-              <Button
+              <LoaderButton
                 fullWidth
                 variant="outlined"
                 color="primary"
                 className={classes.exitBtn}
-                endIcon={<ExitToAppIcon />}
-                onClick={handleLogout}
+                endIcon={!authStore.loading && <ExitToAppIcon />}
+                onClick={() => authStore.logout(history)}
+                loading={authStore.loading}
               >
                 Выйти
-              </Button>
+              </LoaderButton>
             </Box>
           </Grid>
 
