@@ -5,19 +5,17 @@ import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import clsx from 'clsx';
 
-import { useRootStore } from '../../base/hooks/useRootStore';
 import { useCommonStyles } from '../../styles/commonStyles';
-import card_img from '../../assets/images/card_img.png';
 import { ICourseItem } from '../../base/types/SubjectTypes';
 
-export interface ISubjectCardProps {
+export interface ICourseCardProps {
   data: ICourseItem;
   fullWidth?: boolean;
   showProgress?: boolean;
   progressPosition?: 'img' | 'descr';
 }
 
-const SubjectCard: React.FC<ISubjectCardProps> = observer(({ data, fullWidth, showProgress, progressPosition }) => {
+const CourseCard: React.FC<ICourseCardProps> = observer(({ data, fullWidth, showProgress, progressPosition }) => {
   const classes = useStyles();
   const commonClasses = useCommonStyles();
   const { id, img, title, description, author, progress } = data;
@@ -27,12 +25,12 @@ const SubjectCard: React.FC<ISubjectCardProps> = observer(({ data, fullWidth, sh
 
   return (
     <Link to="/course" className={clsx(commonClasses.routerLink, classes.link)}>
-      <Box mb={3} className={classes.paperWrap}>
+      <Box mb={3} className={clsx(classes.paperWrap, fullWidth && classes.paperFullWidth)}>
         <Paper elevation={0} variant="outlined">
           <Grid container>
             <Grid item className={classes.imgCol}>
               <Box className={classes.cardImgWrapper}>
-                <img src={card_img} alt="" className={classes.img} />
+                <img src={img} alt="" className={classes.img} />
               </Box>
 
               {showProgress && progressPosition === 'img' && (
@@ -57,10 +55,10 @@ const SubjectCard: React.FC<ISubjectCardProps> = observer(({ data, fullWidth, sh
             <Grid item className={classes.contentCol}>
               <Box px={3} pt={3}>
                 <Box mb={1.5}>
-                  <Typography variant="h6">Гарәп язуы һәм мәдәнияте</Typography>
+                  <Typography variant="h6">{title}</Typography>
                 </Box>
                 <Box mb={2}>
-                  {showProgress && progressPosition === 'descr' && (
+                  {showProgress && progressPosition === 'descr' ? (
                     <Box mb={1}>
                       <Box className={classes.progressBarWrap}>
                         <Typography variant="body1">
@@ -74,6 +72,12 @@ const SubjectCard: React.FC<ISubjectCardProps> = observer(({ data, fullWidth, sh
                           }
                         />
                       </Box>
+                    </Box>
+                  ) : (
+                    <Box mb={1}>
+                      <Typography variant="body1" className={commonClasses.mediumEmphasisOnLight}>
+                        {description}
+                      </Typography>
                     </Box>
                   )}
                 </Box>
@@ -131,6 +135,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
   },
+  paperFullWidth: {
+    maxWidth: '100%',
+  },
 
   progressWrap: {
     position: 'absolute',
@@ -176,4 +183,4 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default SubjectCard;
+export default CourseCard;

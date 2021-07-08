@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { Grid, Typography, Box, makeStyles, Theme } from '@material-ui/core';
 
 import ProfileLessonsNumber from './ProfileLessonsNumber';
-import SubjectCard from '../Subject/SubjectCard';
+import CourseCard from '../Course/CourseCard';
 import { useRootStore } from '../../base/hooks/useRootStore';
 import Loader from '../UI/Loader';
 
@@ -36,9 +36,10 @@ const ProfileContent: React.FC = observer(() => {
 
         <Box display="flex" flexDirection="column" alignItems="center">
           {profileStore.loading && <Loader minHeight={150} />}
-          {profileStore.userCourses &&
+          {!profileStore.loading &&
+            profileStore.userCourses &&
             profileStore.userCourses.map((data: any) => (
-              <SubjectCard data={data} progressPosition="descr" showProgress />
+              <CourseCard data={data} progressPosition="descr" showProgress />
             ))}
         </Box>
       </Box>

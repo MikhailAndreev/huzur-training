@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
   Box,
-  Container,
-  Typography,
   Theme,
   makeStyles,
   AppBar,
@@ -13,7 +11,6 @@ import {
   Divider,
   List,
   ListItem,
-  ListItemText,
   Grid,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -29,7 +26,7 @@ import logo_white from '../assets/images/logo-white.png';
 import logo from '../assets/images/logo.png';
 
 const links = [
-  { title: 'Программа обучения', route: '/education' },
+  { title: 'Программа обучения', route: '/courses' },
   { title: 'Новости', route: '/news' },
   { title: 'О проекте', route: '/about-project' },
 ];

@@ -23,4 +23,8 @@ export const useCommonStyles = makeStyles((theme: Theme) => ({
   lightOnSurface: {
     color: 'rgba(0, 0, 0, 0.38)',
   },
+
+  mediumEmphasisOnLight: {
+    color: 'rgba(0, 0, 0, 0.6)',
+  },
 }));

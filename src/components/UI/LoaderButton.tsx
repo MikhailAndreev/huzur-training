@@ -18,7 +18,7 @@ const LoaderButton: React.FC<ILoaderButtonProps> = props => {
   };
 
   return (
-    <Button {...rest} onClick={handleClick}>
+    <Button {...props} onClick={handleClick}>
       {loading ? <Loader size={24} color={variant === 'outlined' ? palette.primary.main : '#fff'} /> : children}
     </Button>
   );

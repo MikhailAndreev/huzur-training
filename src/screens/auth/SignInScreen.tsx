@@ -7,6 +7,7 @@ import logo from '../../assets/images/logo.png';
 import { AuthData } from '../../base/types/AuthTypes';
 import { useRootStore } from '../../base/hooks/useRootStore';
 import { EmailMaskFormat } from '../../components/UI/Form';
+import LoaderButton from '../../components/UI/LoaderButton';
 
 const SignInScreen: React.FC = observer(() => {
   const { authStore } = useRootStore();
@@ -84,9 +85,9 @@ const SignInScreen: React.FC = observer(() => {
                 </Button>
               </Box>
 
-              <Button fullWidth variant="contained" color="primary" type="submit">
+              <LoaderButton loading={authStore.loading} fullWidth variant="contained" color="primary" type="submit">
                 Керү
-              </Button>
+              </LoaderButton>
             </Box>
           </Box>
         </Paper>

@@ -5,8 +5,17 @@ import NotFoundScreen from './not-found/NotFoundScreen';
 import SignInScreen from './auth/SignInScreen';
 import SignUpScreen from './auth/SignUpScreen';
 import ProfileScreen from './profile/ProfileScreen';
+import CoursesScreen from './courses/CoursesScreen';
 
-const screens = { MainScreen, ComponentsTemplate, NotFoundScreen, SignInScreen, SignUpScreen, ProfileScreen };
+const screens = {
+  MainScreen,
+  ComponentsTemplate,
+  NotFoundScreen,
+  SignInScreen,
+  SignUpScreen,
+  ProfileScreen,
+  CoursesScreen,
+};
 
 type RoutesKeys = keyof typeof screens;
 export const routes: RoutesType<RoutesKeys> = {
@@ -40,6 +49,12 @@ export const routes: RoutesType<RoutesKeys> = {
     exact: true,
     title: 'Профиль',
     component: screens.ProfileScreen,
+  },
+  CoursesScreen: {
+    path: '/courses',
+    exact: true,
+    title: 'Список курсов',
+    component: screens.CoursesScreen,
   },
   NotFoundScreen: {
     path: '/not-found',
