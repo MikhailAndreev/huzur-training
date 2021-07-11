@@ -13,10 +13,10 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CheckIcon from '@material-ui/icons/Check';
 
-import { ISubjectLesson } from '../../base/types/SubjectTypes';
+import { ISubjectItem, ISubjectLesson } from '../../base/types/SubjectTypes';
 
 interface ICourseAccordionProps {
-  data?: any;
+  data: ISubjectItem;
   index: number;
   isCompleted: boolean;
 }

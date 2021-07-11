@@ -4,13 +4,22 @@ import { observer } from 'mobx-react';
 
 import { useRootStore } from '../../base/hooks/useRootStore';
 import Loader from '../../components/UI/Loader';
-import CourseCard from '../../components/Course/CourseCard';
 import AuthorSlider from '../../components/Course/AuthorSlider/AuthorSlider';
 import CourseAccordion from '../../components/Course/CourseAccordion';
 import { subjectItem } from '../../mock/subjectItemData';
+import { ISubjectItem } from '../../base/types/SubjectTypes';
 
 const CourseScreen: React.FC = observer(() => {
   const { authStore, courseStore } = useRootStore();
+
+  // Effects
+  useEffect(() => {
+    courseStore.getSubjectData();
+  }, []);
+
+  if (courseStore.loading) {
+    return <Loader minHeight={300} />;
+  }
 
   return (
     <Container maxWidth="xl">
@@ -69,7 +78,7 @@ const CourseScreen: React.FC = observer(() => {
           </Box>
 
           <Box>
-            {subjectItem.map((subject: any, index: number) => (
+            {subjectItem.map((subject: ISubjectItem, index: number) => (
               <CourseAccordion data={subject} index={index} isCompleted={subject.status === 'completed'} />
             ))}
           </Box>
