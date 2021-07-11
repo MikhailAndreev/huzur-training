@@ -1,16 +1,13 @@
 import { observer } from 'mobx-react';
 import { Paper, Typography, Box, Avatar } from '@material-ui/core';
-import clsx from 'clsx';
 import Slider from 'react-slick';
 
-import { useCommonStyles } from '../../../styles/commonStyles';
 import { useStyles } from './styles';
 import author_img from '../../../assets/images/author_img.png';
 import SliderArrow from './SliderArrow';
 
-const AuthorSlider: React.FC<any> = observer(({data}) => {
+const AuthorSlider: React.FC<any> = observer(({ data }) => {
   const classes = useStyles();
-  const commonClasses = useCommonStyles();
 
   const settings = {
     dots: false,
