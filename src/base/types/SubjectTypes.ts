@@ -12,7 +12,7 @@ export interface ICourseItem {
   author: string;
 }
 
-interface ISubjectAuthor {
+export interface ISubjectAuthor {
   id: number;
   img: string;
   name: string;

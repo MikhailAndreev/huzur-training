@@ -23,17 +23,3 @@ declare module '@material-ui/core/styles/createPalette' {
   }
 }
 
-// Autocomplete declare
-declare module '@material-ui/core/styles/overrides' {
-  interface Theme {
-    MuiAutocomplete: {
-      root: any;
-    };
-  }
-
-  interface ThemeOptions {
-    MuiAutocomplete?: {
-      root?: any;
-    };
-  }
-}

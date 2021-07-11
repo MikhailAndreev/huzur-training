@@ -3,8 +3,8 @@ import { Paper, Typography, Box, Avatar } from '@material-ui/core';
 import Slider from 'react-slick';
 
 import { useStyles } from './styles';
-import author_img from '../../../assets/images/author_img.png';
 import SliderArrow from './SliderArrow';
+import { ISubjectAuthor } from '../../../base/types/SubjectTypes';
 
 const AuthorSlider: React.FC<any> = observer(({ data }) => {
   const classes = useStyles();
@@ -22,17 +22,17 @@ const AuthorSlider: React.FC<any> = observer(({ data }) => {
   return (
     <Box mx={-2} className={classes.sliderWrap}>
       <Slider {...settings}>
-        {data.map((author: any, index: number) => (
+        {data.map((author: ISubjectAuthor, index: number) => (
           <Box key={index} width="100%" display="flex !important" justifyContent="center" px={2}>
             <Box width="100%" maxWidth={{ xxs: 320, md: 'none' }}>
               <Paper elevation={0} variant="outlined">
                 <Box pt={8.25} pb={4.75} px={2}>
                   <Box display="flex" flexDirection="column" alignItems="center" mb={4.625}>
-                    <Avatar src={author_img} className={classes.avatar} />
+                    <Avatar src={author.img} className={classes.avatar} />
                   </Box>
 
                   <Typography variant="h6" align="center">
-                    Хамидуллин Ришат Ахтямович
+                    {author.name}
                   </Typography>
                 </Box>
               </Paper>

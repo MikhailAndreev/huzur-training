@@ -6,6 +6,7 @@ import ProfileLessonsNumber from './ProfileLessonsNumber';
 import CourseCard from '../Course/CourseCard';
 import { useRootStore } from '../../base/hooks/useRootStore';
 import Loader from '../UI/Loader';
+import { ICourseItem } from '../../base/types/SubjectTypes';
 
 const ProfileContent: React.FC = observer(() => {
   const { profileStore } = useRootStore();
@@ -38,7 +39,7 @@ const ProfileContent: React.FC = observer(() => {
           {profileStore.loading && <Loader minHeight={150} />}
           {!profileStore.loading &&
             profileStore.userCourses &&
-            profileStore.userCourses.map((data: any) => (
+            profileStore.userCourses.map((data: ICourseItem) => (
               <CourseCard data={data} progressPosition="descr" showProgress />
             ))}
         </Box>

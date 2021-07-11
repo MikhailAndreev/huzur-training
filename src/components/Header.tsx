@@ -42,7 +42,6 @@ const Header: React.FC = observer(() => {
   const location = useLocation();
 
   useEffect(() => {
-    // console.log('location', location);
     if (location.pathname === '/') {
       setIsMainPage(true);
     } else {
@@ -61,8 +60,6 @@ const Header: React.FC = observer(() => {
   const handleGoToHome = () => {
     // console.log('go home');
   };
-
-  // const isMainPage = true;
 
   const renderHeaderLinks = () => {
     return (

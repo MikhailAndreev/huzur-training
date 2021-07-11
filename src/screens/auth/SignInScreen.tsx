@@ -24,7 +24,6 @@ const SignInScreen: React.FC = observer(() => {
     // action for Login
     e.preventDefault();
     authStore.login(values, history);
-    console.log('submit');
   };
   const handleResetPassword = (e: any) => {
     // action for Reset password

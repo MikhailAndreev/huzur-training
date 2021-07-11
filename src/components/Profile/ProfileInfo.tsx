@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { Paper, Typography, Box, makeStyles, Theme, Button, Avatar, FormLabel, TextField } from '@material-ui/core';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import clsx from 'clsx';
+import { toJS } from 'mobx';
 
 import { useCommonStyles } from '../../styles/commonStyles';
 import profile_img from '../../assets/images/profile_img.png';
@@ -14,14 +15,19 @@ const ProfileInfo: React.FC = observer(() => {
   const { profileStore } = useRootStore();
 
   const [userName, setUserName] = useState<string>('');
-  // TODO: get photo from store
-  const [avatar, setAvatar] = useState<Blob | string>(profile_img);
+  const [avatar, setAvatar] = useState<string>('');
+
+  // Effects
+  useEffect(() => {
+    if (profileStore.profile?.photo) {
+      setAvatar(profileStore.profile?.photo);
+    }
+  }, [profileStore.profile?.photo]);
 
   // Handlers
   const handleEditProfile = () => {
     // action for Edit Profile
     profileStore.setIsEdit('userInfo', true);
-    console.log('edit profile');
   };
 
   const getPhoto = () => {
@@ -64,7 +70,7 @@ const ProfileInfo: React.FC = observer(() => {
     return (
       <>
         <Box className={commonClasses.profileImgWrap}>
-          <Avatar className={commonClasses.avatarImg} alt="profile" src={profile_img} />
+          <Avatar className={commonClasses.avatarImg} alt="profile" src={avatar} />
         </Box>
 
         <Box mb={2.125}>

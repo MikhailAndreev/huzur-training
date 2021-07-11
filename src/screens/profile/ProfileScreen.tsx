@@ -13,15 +13,14 @@ import { useRootStore } from '../../base/hooks/useRootStore';
 import LoaderButton from '../../components/UI/LoaderButton';
 
 const ProfileScreen: React.FC = observer(() => {
-  const { authStore } = useRootStore();
+  const { authStore, profileStore } = useRootStore();
   const classes = useStyles();
-  const commonClasses = useCommonStyles();
   const [isNotificationEnabled, setIsNotificationEnabled] = useState<boolean>(false);
   const history = useHistory();
 
   // Effects
   useEffect(() => {
-    // Заполнить профиль данными пользователя
+    profileStore.getProfile();
   }, []);
 
   const handleChecked = (e: any) => {

@@ -39,7 +39,7 @@ const CourseAccordion: React.FC<ICourseAccordionProps> = ({ data, index, isCompl
   }, [data.status]);
 
   // Handlers
-  const handleExpand = (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
+  const handleExpand = (event: any, isExpanded: boolean) => {
     setExpanded(isExpanded);
   };
 

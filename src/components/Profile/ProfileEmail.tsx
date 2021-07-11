@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
 import { Paper, Typography, Box, makeStyles, Theme, Button, Avatar, FormLabel, TextField } from '@material-ui/core';
 import clsx from 'clsx';
@@ -25,7 +25,6 @@ const ProfileEmail: React.FC = observer(() => {
         email: profileStore.profile?.email,
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profileStore.profile]);
 
   // Handlers
