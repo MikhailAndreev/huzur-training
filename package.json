@@ -61,6 +61,8 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/react-text-mask": "^5.4.6",
     "@types/webpack-env": "^1.16.0",
+    "@types/react-slick": "^0.23.4",
+    "react-slick": "^0.27.1",
     "neti-module-generator": "^1.0.2",
     "node-sass": "^4.14.1",
     "prettier": "^2.2.1",

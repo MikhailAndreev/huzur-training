@@ -11,3 +11,13 @@ export interface ICourseItem {
   img: string;
   author: string;
 }
+
+export interface ISubjectItem {
+  id: number;
+  title: string;
+  status: 'current' | 'completed' | 'blocked' | string;
+  lessons: ISubjectLesson[];
+}
+
+export type ISubjectLesson = Omit<ISubjectItem, 'lessons'>;
+

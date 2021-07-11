@@ -10,7 +10,7 @@ export const theme = createMuiTheme({
       sm: 576,
       md: 768,
       lg: 992,
-      xl: 1208 + 48,
+      xl: 1120 + 48,
     },
   },
   palette: {
@@ -104,6 +104,8 @@ export const theme = createMuiTheme({
         },
       },
     },
+
+    // Paper
     MuiPaper: {
       root: {
         overflow: 'hidden',
@@ -113,6 +115,7 @@ export const theme = createMuiTheme({
       },
     },
 
+    // Buttons
     MuiButton: {
       root: {
         height: 40,
@@ -178,6 +181,7 @@ export const theme = createMuiTheme({
       },
     },
 
+    // Form Label
     MuiFormLabel: {
       root: {
         display: 'block',
@@ -190,6 +194,7 @@ export const theme = createMuiTheme({
       },
     },
 
+    // Input
     MuiOutlinedInput: {
       root: {
         padding: '0',
@@ -206,6 +211,7 @@ export const theme = createMuiTheme({
       },
     },
 
+    // LInear Progress
     MuiLinearProgress: {
       root: {
         height: 8,
@@ -218,6 +224,19 @@ export const theme = createMuiTheme({
       bar: {
         borderRadius: 16,
         backgroundColor: '#009688',
+      },
+    },
+
+    // Accordion
+    MuiAccordionSummary: {
+      root: {
+        padding: '0',
+        '& .MuiAccordionSummary-content': {
+          order: 1,
+        },
+      },
+      expandIcon: {
+        margin: '16px 12px',
       },
     },
   },

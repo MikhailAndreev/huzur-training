@@ -35,3 +35,7 @@ export const userCourses: ICourseItem[] = [
     author: 'Артем Кулаев',
   },
 ];
+
+
+
+

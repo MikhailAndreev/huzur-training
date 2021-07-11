@@ -20,11 +20,8 @@ const CourseCard: React.FC<ICourseCardProps> = observer(({ data, fullWidth, show
   const commonClasses = useCommonStyles();
   const { id, img, title, description, author, progress } = data;
 
-  //   const dataProgress = { progress: 75, fullProgress: 100 };
-  const dataProgress = {};
-
   return (
-    <Link to="/course" className={clsx(commonClasses.routerLink, classes.link)}>
+    <Link to={`/courses/${id}`} className={clsx(commonClasses.routerLink, classes.link)}>
       <Box mb={3} className={clsx(classes.paperWrap, fullWidth && classes.paperFullWidth)}>
         <Paper elevation={0} variant="outlined">
           <Grid container>
