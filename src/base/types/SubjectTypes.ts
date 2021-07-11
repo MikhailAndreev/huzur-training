@@ -12,6 +12,20 @@ export interface ICourseItem {
   author: string;
 }
 
+interface ISubjectAuthor {
+  id: number;
+  img: string;
+  name: string;
+}
+
+export interface ISubjectData {
+  id: number;
+  title: string;
+  description: string;
+  lessonsList: ISubjectItem[];
+  authors: ISubjectAuthor[];
+}
+
 export interface ISubjectItem {
   id: number;
   title: string;
@@ -20,4 +34,3 @@ export interface ISubjectItem {
 }
 
 export type ISubjectLesson = Omit<ISubjectItem, 'lessons'>;
-

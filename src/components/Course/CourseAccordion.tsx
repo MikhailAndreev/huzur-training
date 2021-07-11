@@ -16,6 +16,7 @@ import CheckIcon from '@material-ui/icons/Check';
 import { ISubjectItem, ISubjectLesson } from '../../base/types/SubjectTypes';
 
 interface ICourseAccordionProps {
+  key: number;
   data: ISubjectItem;
   index: number;
   isCompleted: boolean;

@@ -6,7 +6,6 @@ import { useRootStore } from '../../base/hooks/useRootStore';
 import Loader from '../../components/UI/Loader';
 import AuthorSlider from '../../components/Course/AuthorSlider/AuthorSlider';
 import CourseAccordion from '../../components/Course/CourseAccordion';
-import { subjectItem } from '../../mock/subjectItemData';
 import { ISubjectItem } from '../../base/types/SubjectTypes';
 
 const CourseScreen: React.FC = observer(() => {
@@ -67,9 +66,7 @@ const CourseScreen: React.FC = observer(() => {
             <Typography variant="h5">Преподаватели</Typography>
           </Box>
 
-          <Box>
-            <AuthorSlider />
-          </Box>
+          <Box>{courseStore.subjectData?.authors && <AuthorSlider data={courseStore.subjectData?.authors} />}</Box>
         </Box>
 
         <Box>
@@ -78,9 +75,15 @@ const CourseScreen: React.FC = observer(() => {
           </Box>
 
           <Box>
-            {subjectItem.map((subject: ISubjectItem, index: number) => (
-              <CourseAccordion data={subject} index={index} isCompleted={subject.status === 'completed'} />
-            ))}
+            {courseStore.subjectData &&
+              courseStore.subjectData.lessonsList.map((subject: ISubjectItem, index: number) => (
+                <CourseAccordion
+                  key={index}
+                  data={subject}
+                  index={index}
+                  isCompleted={subject.status === 'completed'}
+                />
+              ))}
           </Box>
         </Box>
       </Box>

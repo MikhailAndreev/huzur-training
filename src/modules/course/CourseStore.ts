@@ -1,15 +1,15 @@
 import { makeAutoObservable } from 'mobx';
 
 import { userCourses } from '../../mock/coursesMockData';
-import { ICourseItem, ISubjectItem } from '../../base/types/SubjectTypes';
-import { subjectItem } from '../../mock/subjectItemData';
+import { ICourseItem, ISubjectData, ISubjectItem } from '../../base/types/SubjectTypes';
+import { subjectData } from '../../mock/subjectData';
 import { Nullable } from '../../base/types/BaseTypes';
 
 export class CourseStore {
   loading = false;
 
   coursesData: Nullable<ICourseItem[]> = null;
-  subjectData: Nullable<ISubjectItem[]> = null;
+  subjectData: Nullable<ISubjectData> = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -26,7 +26,7 @@ export class CourseStore {
   getSubjectData = () => {
     this.setLoading(true);
     setTimeout(() => {
-      this.setSubjectData(subjectItem);
+      this.setSubjectData(subjectData);
       this.setLoading(false);
     }, 1500);
   };
@@ -35,7 +35,7 @@ export class CourseStore {
     this.coursesData = data;
   };
 
-  setSubjectData = (data: ISubjectItem[]) => {
+  setSubjectData = (data: ISubjectData) => {
     this.subjectData = data;
   };
 

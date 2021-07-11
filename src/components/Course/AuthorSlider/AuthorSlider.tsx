@@ -8,7 +8,7 @@ import { useStyles } from './styles';
 import author_img from '../../../assets/images/author_img.png';
 import SliderArrow from './SliderArrow';
 
-const AuthorSlider: React.FC<any> = observer(() => {
+const AuthorSlider: React.FC<any> = observer(({data}) => {
   const classes = useStyles();
   const commonClasses = useCommonStyles();
 
@@ -25,7 +25,7 @@ const AuthorSlider: React.FC<any> = observer(() => {
   return (
     <Box mx={-2} className={classes.sliderWrap}>
       <Slider {...settings}>
-        {[1, 2, 3, 4, 5, 6, 7].map((author: any, index: number) => (
+        {data.map((author: any, index: number) => (
           <Box key={index} width="100%" display="flex !important" justifyContent="center" px={2}>
             <Box width="100%" maxWidth={{ xxs: 320, md: 'none' }}>
               <Paper elevation={0} variant="outlined">
