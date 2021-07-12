@@ -26,10 +26,16 @@ export interface ISubjectData {
   authors: ISubjectAuthor[];
 }
 
+export enum SubjectStatus {
+  current,
+  completed,
+  blocked,
+}
+
 export interface ISubjectItem {
   id: number;
   title: string;
-  status: 'current' | 'completed' | 'blocked' | string;
+  status: SubjectStatus;
   lessons: ISubjectLesson[];
 }
 

@@ -25,7 +25,12 @@ import { useCommonStyles } from '../styles/commonStyles';
 import logo_white from '../assets/images/logo-white.png';
 import logo from '../assets/images/logo.png';
 
-const links = [
+interface IHeaderLink {
+  title: string;
+  route: string;
+}
+
+const links: IHeaderLink[] = [
   { title: 'Программа обучения', route: '/courses' },
   { title: 'Новости', route: '/news' },
   { title: 'О проекте', route: '/about-project' },
@@ -33,7 +38,6 @@ const links = [
 
 const Header: React.FC = observer(() => {
   const classes = useStyles();
-  const theme = useTheme();
   const [open, setOpen] = useState(false);
   const { isMD } = useAllMQ();
   const commonClasses = useCommonStyles();

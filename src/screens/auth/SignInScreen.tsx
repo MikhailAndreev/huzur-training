@@ -21,10 +21,10 @@ const SignInScreen: React.FC = observer(() => {
 
   // Handlers
   const handleSubmit = (e: any) => {
-    // action for Login
     e.preventDefault();
     authStore.login(values, history);
   };
+  
   const handleResetPassword = (e: any) => {
     // action for Reset password
     console.log('reset password');

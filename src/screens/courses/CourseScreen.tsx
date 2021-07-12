@@ -6,7 +6,7 @@ import { useRootStore } from '../../base/hooks/useRootStore';
 import Loader from '../../components/UI/Loader';
 import AuthorSlider from '../../components/Course/AuthorSlider/AuthorSlider';
 import CourseAccordion from '../../components/Course/CourseAccordion';
-import { ISubjectItem } from '../../base/types/SubjectTypes';
+import { ISubjectItem, SubjectStatus } from '../../base/types/SubjectTypes';
 
 const CourseScreen: React.FC = observer(() => {
   const { authStore, courseStore } = useRootStore();
@@ -81,7 +81,7 @@ const CourseScreen: React.FC = observer(() => {
                   key={index}
                   data={subject}
                   index={index}
-                  isCompleted={subject.status === 'completed'}
+                  isCompleted={subject.status === SubjectStatus.completed}
                 />
               ))}
           </Box>

@@ -13,7 +13,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CheckIcon from '@material-ui/icons/Check';
 
-import { ISubjectItem, ISubjectLesson } from '../../base/types/SubjectTypes';
+import { ISubjectItem, ISubjectLesson, SubjectStatus } from '../../base/types/SubjectTypes';
 
 interface ICourseAccordionProps {
   key: number;
@@ -24,13 +24,13 @@ interface ICourseAccordionProps {
 
 const CourseAccordion: React.FC<ICourseAccordionProps> = ({ data, index, isCompleted }) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = useState(data.status === 'current');
+  const [expanded, setExpanded] = useState(data.status === SubjectStatus.current);
 
   const theme = useTheme();
 
   // Effects;
   useEffect(() => {
-    if (data.status === 'current') {
+    if (data.status === SubjectStatus.current) {
       setExpanded(true);
     }
     return () => {
@@ -43,12 +43,12 @@ const CourseAccordion: React.FC<ICourseAccordionProps> = ({ data, index, isCompl
     setExpanded(isExpanded);
   };
 
-  const getLessonClasses = (status: 'current' | 'completed' | 'blocked' | string) => {
+  const getLessonClasses = (status: SubjectStatus) => {
     switch (status) {
-      case 'completed':
+      case SubjectStatus.completed:
         return classes.doneLink;
 
-      case 'current':
+      case SubjectStatus.current:
         return classes.activeLink;
 
       default:
@@ -64,7 +64,9 @@ const CourseAccordion: React.FC<ICourseAccordionProps> = ({ data, index, isCompl
           <Typography className={classes.headTitle}>
             {index + 1}. {data.title}
           </Typography>
-          {isCompleted && data.status === 'completed' && <Box className={classes.doneMarkText}>Выполнено!</Box>}
+          {isCompleted && data.status === SubjectStatus.completed && (
+            <Box className={classes.doneMarkText}>Выполнено!</Box>
+          )}
         </Box>
       </AccordionSummary>
 
@@ -75,12 +77,12 @@ const CourseAccordion: React.FC<ICourseAccordionProps> = ({ data, index, isCompl
               <Box
                 mr={1}
                 height="24px"
-                className={lesson.status === 'completed' ? classes.showDoneIcon : classes.hideDoneIcon}
+                className={lesson.status === SubjectStatus.completed ? classes.showDoneIcon : classes.hideDoneIcon}
               >
                 <CheckIcon color="secondary" />
               </Box>
 
-              {lesson.status === 'blocked' ? (
+              {lesson.status === SubjectStatus.blocked ? (
                 <Typography variant="body2" className={getLessonClasses(lesson.status)}>
                   {index + 1}.{lessonIndex + 1}. {lesson.title}
                 </Typography>
