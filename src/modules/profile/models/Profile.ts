@@ -1,7 +1,12 @@
 import AbstractModel from '../../../base/AbstractModel';
 
 export class Profile extends AbstractModel {
-  userData: number | null = null;
+  id: number | null = null;
+  name: string | null = null;
+  surname: string | null = null;
+  email: string | null = null;
+  photo: string | null = null;
+  enableNotification: boolean | null = null;
 
   constructor(props: any) {
     super();

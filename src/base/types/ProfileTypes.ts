@@ -9,8 +9,8 @@ export interface IProfileData {
 }
 
 export interface IProfileEmailForm {
-  email: string;
-  password: string;
+  email: string | null;
+  password: string | null;
 }
 
 export interface IProfilePasswordFormState {

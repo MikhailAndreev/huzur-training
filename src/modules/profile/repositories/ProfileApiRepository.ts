@@ -1,10 +1,12 @@
 import AbstractApiRepository from '../../../base/repositories/AbstractApiRepository';
+import { userData, userCourses } from '../../../mock/userMockData';
 
 export default class ProfileApiRepository extends AbstractApiRepository {
-  // getAll = () => {
-  //   return this.get<News[]>({ url: `/posts` });
-  // };
-  // getOne = (id: number) => {
-  //   return this.get<News>({ url: `/posts/${id}` });
-  // };
+  getUserData = () => {
+    return userData;
+  };
+
+  getUserCourses = () => {
+    return userCourses;
+  };
 }

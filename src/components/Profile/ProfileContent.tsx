@@ -6,7 +6,6 @@ import ProfileLessonsNumber from './ProfileLessonsNumber';
 import CourseCard from '../Course/CourseCard';
 import { useRootStore } from '../../base/hooks/useRootStore';
 import Loader from '../UI/Loader';
-import { ICourseItem } from '../../base/types/SubjectTypes';
 import { SubjectItem } from '../../modules/course/models/SubjectItem';
 
 const ProfileContent: React.FC = observer(() => {

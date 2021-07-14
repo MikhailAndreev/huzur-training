@@ -1,5 +1,5 @@
 import AbstractModel from '../../../base/AbstractModel';
-import { ISubjectAuthor, ISubjectData, ISubjectItem } from '../../../base/types/SubjectTypes';
+import { ISubjectAuthor, ISubjectItem } from '../../../base/types/SubjectTypes';
 
 export class Course extends AbstractModel {
   id: number | null = null;

@@ -5,7 +5,6 @@ import { observer } from 'mobx-react';
 import { useRootStore } from '../../base/hooks/useRootStore';
 import Loader from '../../components/UI/Loader';
 import CourseCard from '../../components/Course/CourseCard';
-import { ICourseItem } from '../../base/types/SubjectTypes';
 import { SubjectItem } from '../../modules/course/models/SubjectItem';
 
 const CoursesScreen: React.FC = observer(() => {

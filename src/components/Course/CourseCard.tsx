@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { observer } from 'mobx-react';
 import { Paper, Typography, Box, makeStyles, Theme, Button, Grid, LinearProgress } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -6,7 +5,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import clsx from 'clsx';
 
 import { useCommonStyles } from '../../styles/commonStyles';
-import { ICourseItem } from '../../base/types/SubjectTypes';
 import { useAllMQ } from '../../base/hooks/useAllMQ';
 import { SubjectItem } from '../../modules/course/models/SubjectItem';
 

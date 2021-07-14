@@ -1,7 +1,9 @@
 import ProfileApiRepository from './repositories/ProfileApiRepository';
 import { ProfileFactory } from './ProfileFactory';
+import { Profile } from './models/Profile';
+import { SubjectItem } from '../course/models/SubjectItem';
 
-export default class NewsService {
+export default class ProfileService {
   profileApi: ProfileApiRepository;
   profileFactory: ProfileFactory;
 
@@ -10,13 +12,13 @@ export default class NewsService {
     this.profileFactory = new ProfileFactory();
   }
 
-  // getAll = async (): Promise<News[]> => {
-  //   const { data } = await this.newsApi.getAll();
-  //   return this.newsFactory.createList<News>(News, data).slice(0, 12); // cut list for demo
-  // };
+  getUserData = async (): Promise<Profile> => {
+    const data = await this.profileApi.getUserData();
+    return this.profileFactory.create<Profile>(Profile, data);
+  };
 
-  // getOne = async (id: number): Promise<News> => {
-  //   const { data } = await this.newsApi.getOne(id);
-  //   return this.newsFactory.create<News>(News, data);
-  // };
+  getUserCourses = async (): Promise<SubjectItem[]> => {
+    const data = await this.profileApi.getUserCourses();
+    return this.profileFactory.createList<SubjectItem>(SubjectItem, data);
+  };
 }

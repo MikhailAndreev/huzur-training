@@ -1,15 +1,11 @@
 import { makeAutoObservable } from 'mobx';
 
 import AuthService from './AuthService';
-import { Auth } from './models/Auth';
-import { Nullable } from '../../base/types/BaseTypes';
 import { AuthData } from '../../base/types/AuthTypes';
 
 export class AuthStore {
   loading = false;
   isAuth = false;
-
-  newsData: Nullable<Auth> = null;
 
   private authService: AuthService;
 
