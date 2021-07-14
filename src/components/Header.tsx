@@ -20,6 +20,7 @@ import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
+import { NavLink } from 'react-router-dom';
 
 import { useAllMQ } from '../base/hooks/useAllMQ';
 import { useCommonStyles } from '../styles/commonStyles';
@@ -33,7 +34,7 @@ interface IHeaderLink {
 
 const links: IHeaderLink[] = [
   { title: 'Программа обучения', route: '/courses' },
-  { title: 'Новости', route: '/news' },
+  { title: 'Профиль', route: '/profile' },
   { title: 'О проекте', route: '/about-project' },
 ];
 
@@ -72,9 +73,17 @@ const Header: React.FC = observer(() => {
         {links.map((item, index) => {
           return (
             <Box key={index} display="inline-block" ml={{ lg: 2, xl: 4 }}>
-              <Link className={clsx(commonClasses.routerLink, classes.headerLink)} to={item.route}>
+              <NavLink
+                activeClassName="selected"
+                className={clsx(commonClasses.routerLink, classes.headerLink)}
+                to={item.route}
+              >
                 {item.title}
-              </Link>
+              </NavLink>
+
+              {/* <Link className={clsx(commonClasses.routerLink, classes.headerLink)} to={item.route}>
+                {item.title}
+              </Link> */}
             </Box>
           );
         })}
@@ -140,9 +149,13 @@ const Header: React.FC = observer(() => {
         <List>
           {links.map((item, index) => (
             <ListItem button key={index}>
-              <Link className={clsx(commonClasses.routerLink, classes.headerLink)} to={item.route}>
+              <NavLink
+                activeClassName="selected"
+                className={clsx(commonClasses.routerLink, classes.headerLink)}
+                to={item.route}
+              >
                 {item.title}
-              </Link>
+              </NavLink>
             </ListItem>
           ))}
         </List>
@@ -209,11 +222,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     '&:hover': {
       opacity: 0.7,
     },
+    '&.selected': {
+      color: theme.palette.primary.main,
+    },
   },
 
   customGrid: {
     display: 'flex',
     justifyContent: 'flex-end',
+    '& .MuiIconButton-root': {
+      marginRight: 0,
+    },
   },
   headerWhite: {
     color: '#fff',
