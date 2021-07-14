@@ -89,12 +89,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
       position: 'absolute',
       top: '222px',
     },
-    '& .slick-prev': {
-      left: '-19px',
-    },
-    '& .slick-next': {
-      right: '-19px',
-    },
   },
 
   avatar: {

@@ -126,6 +126,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   headTitle: {
     lineHeight: '20px',
+    [theme.breakpoints.down('md')]: {
+      fontSize: 14,
+    },
   },
   doneMarkText: {
     color: theme.palette.surface.MediumEmphasis,
@@ -133,6 +136,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: 16,
     border: '1px solid rgba(0, 0, 0, 0.12)',
     borderRadius: 8,
+    [theme.breakpoints.down('md')]: {
+      fontSize: 13,
+      padding: '5px 10px',
+    },
   },
   doneMarkIcon: {
     color: theme.palette.surface.MediumEmphasis,

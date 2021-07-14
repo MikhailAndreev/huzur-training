@@ -7,9 +7,11 @@ import Loader from '../../components/UI/Loader';
 import AuthorSlider from '../../components/Course/AuthorSlider/AuthorSlider';
 import CourseAccordion from '../../components/Course/CourseAccordion';
 import { ISubjectItem, SubjectStatus } from '../../base/types/SubjectTypes';
+import { useAllMQ } from '../../base/hooks/useAllMQ';
 
 const CourseScreen: React.FC = observer(() => {
   const { authStore, courseStore } = useRootStore();
+  const { isLG, isSM } = useAllMQ();
 
   // Effects
   useEffect(() => {
@@ -46,14 +48,16 @@ const CourseScreen: React.FC = observer(() => {
             </Typography>
           </Box>
 
-          <Box display="flex">
-            <Box width={256} mr={4}>
-              <Button fullWidth variant="contained" color="primary">
-                Зарегистрироваться
-              </Button>
-            </Box>
+          <Box display="flex" flexDirection={isSM ? 'column' : 'row'}>
+            {!authStore.isAuth && (
+              <Box width={isSM ? '100%' : '256px'} mr={4} mb={{ xs: 2 }}>
+                <Button fullWidth variant="contained" color="primary">
+                  Зарегистрироваться
+                </Button>
+              </Box>
+            )}
 
-            <Box width={256}>
+            <Box width={isSM ? '100%' : '256px'}>
               <Button fullWidth variant="outlined" color="primary">
                 Программа предмета
               </Button>
