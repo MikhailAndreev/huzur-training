@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Box,
-  Typography,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  useTheme,
-  Theme,
-  makeStyles,
-} from '@material-ui/core';
+import { Box, Typography, Accordion, AccordionSummary, AccordionDetails, Theme, makeStyles } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CheckIcon from '@material-ui/icons/Check';
 
@@ -25,8 +16,6 @@ interface ICourseAccordionProps {
 const CourseAccordion: React.FC<ICourseAccordionProps> = ({ data, index, isCompleted }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(data.status === SubjectStatus.current);
-
-  const theme = useTheme();
 
   // Effects;
   useEffect(() => {

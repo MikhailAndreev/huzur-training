@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Container, Typography, Box, Button } from '@material-ui/core';
 import { observer } from 'mobx-react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { useRootStore } from '../../base/hooks/useRootStore';
 import Loader from '../../components/UI/Loader';

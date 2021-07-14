@@ -3,8 +3,6 @@ import { makeAutoObservable, runInAction } from 'mobx';
 import ProfileService from './ProfileService';
 import { Profile } from './models/Profile';
 import { Nullable } from '../../base/types/BaseTypes';
-import { IProfileData } from '../../base/types/ProfileTypes';
-import { userData, userCourses } from '../../mock/userMockData';
 
 export class ProfileStore {
   loading = false;

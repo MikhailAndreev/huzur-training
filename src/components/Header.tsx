@@ -6,7 +6,6 @@ import {
   AppBar,
   Container,
   IconButton,
-  useTheme,
   Drawer,
   Toolbar,
   Divider,
@@ -80,10 +79,6 @@ const Header: React.FC = observer(() => {
               >
                 {item.title}
               </NavLink>
-
-              {/* <Link className={clsx(commonClasses.routerLink, classes.headerLink)} to={item.route}>
-                {item.title}
-              </Link> */}
             </Box>
           );
         })}

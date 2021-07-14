@@ -14,7 +14,7 @@ export interface IProfileEmailForm {
 }
 
 export interface IProfilePasswordFormState {
-  oldPassword: string;
-  newPassword: string;
-  confirmNewPassword: string;
+  oldPassword: string | null;
+  newPassword: string | null;
+  confirmNewPassword: string | null;
 }

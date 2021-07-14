@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
-import { Paper, Typography, Box, makeStyles, Theme, Button, Avatar, FormLabel, TextField } from '@material-ui/core';
-import clsx from 'clsx';
+import { Paper, Typography, Box, makeStyles, Theme, Button, FormLabel, TextField } from '@material-ui/core';
 
 import { useCommonStyles } from '../../styles/commonStyles';
 import { useRootStore } from '../../base/hooks/useRootStore';
@@ -9,7 +8,6 @@ import { IProfileEmailForm } from '../../base/types/ProfileTypes';
 
 const ProfileEmail: React.FC = observer(() => {
   const classes = useStyles();
-  const commonClasses = useCommonStyles();
   const { profileStore } = useRootStore();
 
   const [values, setValues] = useState<IProfileEmailForm>({
@@ -73,9 +71,6 @@ const ProfileEmail: React.FC = observer(() => {
             placeholder="Введите Email"
             value={values.email || profileStore.profile?.email}
             onChange={handleChange}
-            // error={!!store.errorMessages?.email}
-            // helperText={store.errorMessages?.email}
-            // disabled={loading}
           />
         </Box>
         <Box mb={5}>

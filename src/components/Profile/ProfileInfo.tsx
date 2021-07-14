@@ -3,15 +3,12 @@ import { observer } from 'mobx-react';
 import { Paper, Typography, Box, makeStyles, Theme, Button, Avatar, FormLabel, TextField } from '@material-ui/core';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import clsx from 'clsx';
-import { toJS } from 'mobx';
 
 import { useCommonStyles } from '../../styles/commonStyles';
-import profile_img from '../../assets/images/profile_img.png';
 import { useRootStore } from '../../base/hooks/useRootStore';
 
 const ProfileInfo: React.FC = observer(() => {
   const classes = useStyles();
-  const commonClasses = useCommonStyles();
   const { profileStore } = useRootStore();
 
   const [userName, setUserName] = useState<string>('');
@@ -69,8 +66,8 @@ const ProfileInfo: React.FC = observer(() => {
   const renderProfileView = () => {
     return (
       <>
-        <Box className={commonClasses.profileImgWrap}>
-          <Avatar className={commonClasses.avatarImg} alt="profile" src={avatar} />
+        <Box className={classes.profileImgWrap}>
+          <Avatar className={classes.avatarImg} alt="profile" src={avatar} />
         </Box>
 
         <Box mb={2.125}>
@@ -109,9 +106,6 @@ const ProfileInfo: React.FC = observer(() => {
             onChange={handleChange}
             placeholder="Введите имя"
             fullWidth
-            // error={!!store.errorMessages?.name}
-            // helperText={store.errorMessages?.name}
-            // disabled={loading}
           />
         </Box>
         <Box mb={2} width="100%">
@@ -135,7 +129,7 @@ const ProfileInfo: React.FC = observer(() => {
   };
 
   return (
-    <Paper elevation={0} variant="outlined" className={commonClasses.profilePaperInfo}>
+    <Paper elevation={0} variant="outlined" className={classes.profilePaperInfo}>
       {profileStore.isEdit.userInfo ? renderEditInfo() : renderProfileView()}
     </Paper>
   );
@@ -182,6 +176,22 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   removeProfileBtn: {
     color: 'rgba(0, 0, 0, 0.38)',
+  },
+  profilePaperInfo: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flexDirection: 'column',
+    padding: '56px 24px 20px',
+  },
+  profileImgWrap: {
+    width: 128,
+    height: 128,
+    marginBottom: 40,
+  },
+  avatarImg: {
+    width: '100%',
+    height: '100%',
   },
 }));
 

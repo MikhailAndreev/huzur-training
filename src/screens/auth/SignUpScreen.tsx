@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Typography, Box, makeStyles, Theme, Button, Paper, FormLabel, TextField } from '@material-ui/core';
+import { Container, Typography, Box, makeStyles, Theme, Paper, FormLabel, TextField } from '@material-ui/core';
 import { observer } from 'mobx-react';
 import { useHistory, Link } from 'react-router-dom';
 
@@ -7,14 +7,12 @@ import logo from '../../assets/images/logo.png';
 import { AuthData } from '../../base/types/AuthTypes';
 import { useRootStore } from '../../base/hooks/useRootStore';
 import { EmailMaskFormat } from '../../components/UI/Form';
-import { useCommonStyles } from '../../styles/commonStyles';
 import LoaderButton from '../../components/UI/LoaderButton';
 import PasswordInput from '../../components/UI/PasswordInput';
 
 const SignUpScreen: React.FC = observer(() => {
   const { authStore } = useRootStore();
   const classes = useStyles();
-  const commonClasses = useCommonStyles();
   const history = useHistory();
 
   const [values, setValues] = useState<AuthData>({

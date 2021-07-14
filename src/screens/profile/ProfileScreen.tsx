@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Container, Typography, Box, makeStyles, Theme, Button, Grid, Paper, Switch } from '@material-ui/core';
+import { Container, Typography, Box, makeStyles, Theme, Grid, Paper, Switch } from '@material-ui/core';
 import { observer } from 'mobx-react';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useHistory } from 'react-router-dom';
 
-import { useCommonStyles } from '../../styles/commonStyles';
 import ProfileContent from '../../components/Profile/ProfileContent';
 import ProfileInfo from '../../components/Profile/ProfileInfo';
 import ProfileEmail from '../../components/Profile/ProfileEmail';

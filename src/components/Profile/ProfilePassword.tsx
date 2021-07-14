@@ -42,13 +42,10 @@ const ProfilePassword: React.FC = observer(() => {
             fullWidth
             variant="outlined"
             size="small"
-            name="email"
+            name="oldPassword"
             placeholder="Введите Старый пароль"
-            // value={values.email}
+            value={values.oldPassword}
             onChange={handleChange}
-            // error={!!store.errorMessages?.email}
-            // helperText={store.errorMessages?.email}
-            // disabled={loading}
           />
         </Box>
 
@@ -58,13 +55,10 @@ const ProfilePassword: React.FC = observer(() => {
             fullWidth
             variant="outlined"
             size="small"
-            name="email"
+            name="newPassword"
             placeholder="Введите Новый пароль"
-            // value={values.email}
+            value={values.newPassword}
             onChange={handleChange}
-            // error={!!store.errorMessages?.email}
-            // helperText={store.errorMessages?.email}
-            // disabled={loading}
           />
         </Box>
 
@@ -74,13 +68,10 @@ const ProfilePassword: React.FC = observer(() => {
             fullWidth
             variant="outlined"
             size="small"
-            name="email"
+            name="confirmNewPassword"
             placeholder="Введите Новый пароль"
-            // value={values.email}
+            value={values.confirmNewPassword}
             onChange={handleChange}
-            // error={!!store.errorMessages?.email}
-            // helperText={store.errorMessages?.email}
-            // disabled={loading}
           />
         </Box>
 

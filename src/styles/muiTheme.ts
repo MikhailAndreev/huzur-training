@@ -31,8 +31,6 @@ export const theme = createMuiTheme({
       fontWeight: 600,
       letterSpacing: '0.5px',
     },
-    h2: {},
-    h3: {},
     h4: {
       fontSize: 34,
       lineHeight: '48px',
@@ -63,8 +61,6 @@ export const theme = createMuiTheme({
       fontWeight: 400,
       letterSpacing: '0.25px',
     },
-    subtitle1: {},
-    subtitle2: {},
     button: {
       fontSize: 14,
       lineHeight: '16px',
@@ -121,12 +117,6 @@ export const theme = createMuiTheme({
         padding: '0 32px',
         borderRadius: 8,
         transition: 'all 0.3s ease-out',
-        '&:hover': {
-          boxShadow: 'none',
-          opacity: 0.7,
-          backgroundColor: 'transparent',
-        },
-        '&:focus': {},
       },
       contained: {
         boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.05), 0px 3px 8px rgba(0, 0, 0, 0.04), 0px 1px 9px rgba(0, 0, 0, 0.08)',
@@ -144,18 +134,23 @@ export const theme = createMuiTheme({
         border: '1px solid #FD512C',
         boxShadow: 'none',
         color: '#FE8157',
+        '&:hover': {
+          opacity: 0.7,
+        },
       },
-
       textPrimary: {
-        boxShadow: 'none',
+        '&:hover': {
+          opacity: 0.7,
+        },
       },
       textSecondary: {
         color: '#fff',
         boxShadow: 'none',
+        '&:hover': {
+          opacity: 0.7,
+        },
       },
     },
-
-    
 
     MuiFormLabel: {
       root: {

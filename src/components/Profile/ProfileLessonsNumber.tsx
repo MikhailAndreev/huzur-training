@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Box, Typography, makeStyles, useTheme, Theme } from '@material-ui/core';
+import { Paper, Box, Typography, makeStyles, Theme } from '@material-ui/core';
 
 interface IProfileLessonsNumber {
   value: number;
@@ -8,7 +8,6 @@ interface IProfileLessonsNumber {
 
 const ProfileLessonsNumber: React.FC<IProfileLessonsNumber> = ({ value, children }) => {
   const classes = useStyles();
-  const theme = useTheme();
 
   return (
     <Paper elevation={0} variant="outlined" className={classes.customPaper}>
