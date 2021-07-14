@@ -27,6 +27,9 @@ const ProfileLessonsNumber: React.FC<IProfileLessonsNumber> = ({ value, children
 const useStyles = makeStyles((theme: Theme) => ({
   customPaper: {
     maxWidth: 352,
+    [theme.breakpoints.down('lg')]: {
+      maxWidth: '100%',
+    },
   },
   numberPaper: {
     display: 'inline-flex',

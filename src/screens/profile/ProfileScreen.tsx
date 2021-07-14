@@ -11,12 +11,14 @@ import ProfileEmail from '../../components/Profile/ProfileEmail';
 import ProfilePassword from '../../components/Profile/ProfilePassword';
 import { useRootStore } from '../../base/hooks/useRootStore';
 import LoaderButton from '../../components/UI/LoaderButton';
+import { useAllMQ } from '../../base/hooks/useAllMQ';
 
 const ProfileScreen: React.FC = observer(() => {
   const { authStore, profileStore } = useRootStore();
   const classes = useStyles();
   const [isNotificationEnabled, setIsNotificationEnabled] = useState<boolean>(false);
   const history = useHistory();
+  const { isLG } = useAllMQ();
 
   // Effects
   useEffect(() => {
@@ -35,7 +37,7 @@ const ProfileScreen: React.FC = observer(() => {
         </Box>
 
         <Grid container spacing={4}>
-          <Grid item xs={4} className={classes.customAsideGrid}>
+          <Grid item xl={4} lg={4} md={12} sm={12} className={classes.customAsideGrid}>
             <Box mb={4}>
               <ProfileInfo />
             </Box>
@@ -70,7 +72,7 @@ const ProfileScreen: React.FC = observer(() => {
             <Box>
               <LoaderButton
                 fullWidth
-                variant="outlined"
+                variant={isLG ? 'contained' : 'outlined'}
                 color="primary"
                 className={classes.exitBtn}
                 endIcon={!authStore.loading && <ExitToAppIcon />}
@@ -82,7 +84,7 @@ const ProfileScreen: React.FC = observer(() => {
             </Box>
           </Grid>
 
-          <Grid item xs={8}>
+          <Grid item xl={8} lg={8} md={12} sm={12}>
             <ProfileContent />
           </Grid>
         </Grid>
@@ -111,6 +113,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     maxWidth: 384,
     display: 'flex',
     flexDirection: 'column',
+    [theme.breakpoints.down('lg')]: {
+      width: '100%',
+      maxWidth: '100%',
+    },
   },
 
   exitBtn: {

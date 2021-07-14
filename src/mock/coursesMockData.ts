@@ -8,7 +8,7 @@ export const userCourses: ICourseItem[] = [
     description: 'Какие дуа нужно читать во время намаза? Тексты с транскрипцией и на арабском языке',
     progress: { fullCourse: 35, current: 10 },
     img: card_img,
-    author: 'Хамидуллин Ришат Ахтямович',
+    author: 'Хамидуллин Ришат',
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ export const userCourses: ICourseItem[] = [
     description: 'Какие дуа нужно читать во время намаза? Тексты с транскрипцией и на арабском языке',
     progress: { fullCourse: 48, current: 29 },
     img: card_img,
-    author: 'Хамидуллин Ришат Ахтямович',
+    author: 'Хамидуллин Ришат',
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ export const userCourses: ICourseItem[] = [
     description: 'Какие дуа нужно читать во время намаза? Тексты с транскрипцией и на арабском языке',
     progress: { fullCourse: 56, current: 2 },
     img: card_img,
-    author: 'Хамидуллин Ришат Ахтямович',
+    author: 'Хамидуллин Ришат',
   },
   {
     id: 2,
@@ -32,10 +32,6 @@ export const userCourses: ICourseItem[] = [
     description: 'Какие дуа нужно читать во время намаза? Тексты с транскрипцией и на арабском языке',
     progress: { fullCourse: 78, current: 64 },
     img: card_img,
-    author: 'Хамидуллин Ришат Ахтямович',
+    author: 'Хамидуллин Ришат',
   },
 ];
-
-
-
-

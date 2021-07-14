@@ -11,10 +11,11 @@ const MainScreen: React.FC = observer(() => {
 
   return (
     <Container maxWidth="xl">
-      <Box height="100vh">
+      <Box height="100%">
         <Box className={classes.mainBg}>
           <img src={main_bg} alt="" />
         </Box>
+
         <Box className={classes.mainWrap}>
           <Box mb={4}>
             <Typography className={classes.mainTitle} variant="h1">
@@ -49,30 +50,36 @@ const useStyles = makeStyles((theme: Theme) => ({
   mainBg: {
     position: 'absolute',
     width: '100%',
-    height: 1048,
+    height: '100vh',
     top: 0,
     left: 0,
     zIndex: -1,
-    [theme.breakpoints.down('lg')]: {
-      height: '100%',
-    },
     '& img': {
       width: '100%',
       height: '100%',
       objectFit: 'cover',
+      objectPosition: '72% 0',
     },
   },
   mainTitle: {
     color: '#fff',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 52,
+      lineHeight: '52px',
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: 32,
+      lineHeight: '32px',
+    },
   },
   mainWrap: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-end',
     height: '100%',
-    padding: 20,
-    [theme.breakpoints.down('lg')]: {
-      padding: '20px 162px',
+    paddingBottom: '50px',
+    [theme.breakpoints.down('xs')]: {
+      paddingBottom: '80px',
     },
   },
   loginBtn: {

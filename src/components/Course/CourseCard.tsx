@@ -7,6 +7,7 @@ import clsx from 'clsx';
 
 import { useCommonStyles } from '../../styles/commonStyles';
 import { ICourseItem } from '../../base/types/SubjectTypes';
+import { useAllMQ } from '../../base/hooks/useAllMQ';
 
 export interface ICourseCardProps {
   data: ICourseItem;
@@ -18,6 +19,7 @@ export interface ICourseCardProps {
 const CourseCard: React.FC<ICourseCardProps> = observer(({ data, fullWidth, showProgress, progressPosition }) => {
   const classes = useStyles();
   const commonClasses = useCommonStyles();
+  const { isXS } = useAllMQ();
   const { id, img, title, description, author, progress } = data;
 
   return (
@@ -50,9 +52,11 @@ const CourseCard: React.FC<ICourseCardProps> = observer(({ data, fullWidth, show
             </Grid>
 
             <Grid item className={classes.contentCol}>
-              <Box px={3} pt={3}>
+              <Box p={{ xxs: 1.75, xl: 3 }} height="100%" display="flex" flexDirection="column">
                 <Box mb={1.5}>
-                  <Typography variant="h6">{title}</Typography>
+                  <Typography variant="h6" className={classes.cardTitle}>
+                    {title}
+                  </Typography>
                 </Box>
                 <Box mb={2}>
                   {showProgress && progressPosition === 'descr' ? (
@@ -72,27 +76,25 @@ const CourseCard: React.FC<ICourseCardProps> = observer(({ data, fullWidth, show
                     </Box>
                   ) : (
                     <Box mb={1}>
-                      <Typography variant="body1" className={commonClasses.mediumEmphasisOnLight}>
+                      <Typography
+                        variant="body1"
+                        className={clsx(commonClasses.mediumEmphasisOnLight, classes.cardDescr)}
+                      >
                         {description}
                       </Typography>
                     </Box>
                   )}
                 </Box>
 
-                <Box display="flex" justifyContent="space-between">
-                  <Box>
+                <Box className={classes.cardFooterWrap}>
+                  <Box display="flex" alignSelf={isXS ? 'flex-start' : 'flex-end'}>
                     <Typography variant="body2" className={commonClasses.lightOnSurface}>
                       {author}
                     </Typography>
                   </Box>
 
-                  <Box>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      endIcon={<ChevronRightIcon />}
-                      className={classes.watchBtn}
-                    >
+                  <Box width={isXS ? '100%' : 'auto'}>
+                    <Button color="primary" endIcon={<ChevronRightIcon />} className={classes.watchBtn}>
                       Смотреть
                     </Button>
                   </Box>
@@ -116,9 +118,19 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     maxWidth: 736,
     cursor: 'pointer',
+    [theme.breakpoints.down('lg')]: {
+      maxWidth: '100%',
+    },
     [theme.breakpoints.down('xs')]: {
       maxWidth: 340,
     },
+    [theme.breakpoints.down('md')]: {
+      '& .MuiButton-root': {
+        opacity: 1,
+        visibility: 'visible',
+      },
+    },
+    transition: 'all 0.3s ease',
     '&:hover': {
       '& .MuiPaper-root': {
         transform: 'translateY(-2px)',
@@ -159,11 +171,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: 'relative',
     width: 270,
     height: 205,
+    [theme.breakpoints.down('lg')]: {
+      width: 230,
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+    },
   },
   img: {
     width: '100%',
     height: '100%',
     objectFit: 'cover',
+    objectPosition: 'top left',
   },
   cardImgWrapper: {
     width: '100%',
@@ -177,6 +196,36 @@ const useStyles = makeStyles((theme: Theme) => ({
     visibility: 'hidden',
     transition: 'all .3s ease',
     transform: 'translate(2px, 2px)',
+    height: 'auto',
+    padding: '12px 16px',
+    [theme.breakpoints.down('md')]: {
+      padding: '5px 10px',
+      fontSize: 13,
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
+  },
+  cardTitle: {
+    [theme.breakpoints.down('md')]: {
+      fontSize: 18,
+    },
+  },
+  cardDescr: {
+    [theme.breakpoints.down('md')]: {
+      fontSize: 14,
+    },
+  },
+
+  cardFooterWrap: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    flex: '1 0 auto',
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
   },
 }));
 

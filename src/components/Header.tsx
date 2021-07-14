@@ -4,6 +4,7 @@ import {
   Theme,
   makeStyles,
   AppBar,
+  Container,
   IconButton,
   useTheme,
   Drawer,
@@ -70,7 +71,7 @@ const Header: React.FC = observer(() => {
       <>
         {links.map((item, index) => {
           return (
-            <Box key={index} display="inline-block" mr={{ lg: 2, xl: 4 }}>
+            <Box key={index} display="inline-block" ml={{ lg: 2, xl: 4 }}>
               <Link className={clsx(commonClasses.routerLink, classes.headerLink)} to={item.route}>
                 {item.title}
               </Link>
@@ -82,7 +83,7 @@ const Header: React.FC = observer(() => {
   };
 
   return (
-    <>
+    <Container maxWidth="xl">
       <AppBar
         position="relative"
         elevation={0}
@@ -93,9 +94,9 @@ const Header: React.FC = observer(() => {
         <Toolbar>
           <Grid container alignItems="center">
             <Grid item xs={4}>
-              <Box maxWidth={{ xxs: 200, md: 224 }} pl={4}>
+              <Box maxWidth={{ xxs: 200, md: 224 }}>
                 <Link to="/" className={commonClasses.routerLink} onClick={handleGoToHome}>
-                  <Box width={72} height={64}>
+                  <Box className={classes.logoWrap}>
                     <img width="100%" height="100%" src={isMainPage ? logo_white : logo} alt="" />
                   </Box>
                 </Link>
@@ -146,7 +147,7 @@ const Header: React.FC = observer(() => {
           ))}
         </List>
       </Drawer>
-    </>
+    </Container>
   );
 });
 
@@ -154,12 +155,15 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
-    padding: '20px 143px',
+    padding: '20px 0',
     background: 'transparent',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    '& .MuiToolbar-root': {
+      padding: 0,
+    },
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -213,6 +217,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   headerWhite: {
     color: '#fff',
+  },
+
+  logoWrap: {
+    width: 72,
+    height: 64,
+    [theme.breakpoints.down('sm')]: {
+      width: 62,
+      height: 54,
+    },
   },
 }));
 

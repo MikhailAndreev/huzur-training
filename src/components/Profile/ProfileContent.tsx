@@ -51,6 +51,9 @@ const ProfileContent: React.FC = observer(() => {
 const useStyles = makeStyles((theme: Theme) => ({
   customGrid: {
     maxWidth: 384,
+    [theme.breakpoints.down('lg')]: {
+      maxWidth: '100%',
+    },
   },
 }));
 

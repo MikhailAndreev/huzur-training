@@ -5,7 +5,7 @@ import { museoSansCyrl100, museoSansCyrl300, museoSansCyrl500, museoSansCyrl700,
 export const theme = createMuiTheme({
   breakpoints: {
     values: {
-      xxs: 0,
+      xxs: 320,
       xs: 375,
       sm: 576,
       md: 768,
@@ -105,17 +105,16 @@ export const theme = createMuiTheme({
       },
     },
 
-    // Paper
     MuiPaper: {
       root: {
         overflow: 'hidden',
+        transition: 'box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 0.3s ease, border 0.3s ease',
       },
       outlined: {
         borderRadius: 16,
       },
     },
 
-    // Buttons
     MuiButton: {
       root: {
         height: 40,
@@ -135,53 +134,27 @@ export const theme = createMuiTheme({
       containedPrimary: {
         color: '#FFFFFF',
         '&:hover': {
-          background: 'linear-gradient( 0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)), #FE8157',
           backgroundColor: '#FE8157',
         },
-        '&:focus': {
-          // bug with focus, when click on EDIT btn in Profile - btn SAVE become focused and change background
-          // boxShadow: 'none',
-          // opacity: 0.7,
-          // backgroundColor: '#FEA789',
-        },
-      },
-      containedSecondary: {
-        '&:hover': {},
-        '&:focus': {},
       },
       outlined: {
         boxShadow: 'none',
-        '&:hover': {
-          opacity: 0.7,
-        },
       },
       outlinedPrimary: {
         border: '1px solid #FD512C',
         boxShadow: 'none',
         color: '#FE8157',
-        '&:focus': {},
       },
 
       textPrimary: {
         boxShadow: 'none',
-        '&:hover': {
-          opacity: 0.7,
-        },
-        '&:focus': {
-          opacity: 0.7,
-        },
       },
       textSecondary: {
         color: '#fff',
         boxShadow: 'none',
-        '&:hover': {
-          backgroundColor: 'transparent',
-          opacity: 0.7,
-        },
       },
     },
 
-    // Form Label
     MuiFormLabel: {
       root: {
         display: 'block',
@@ -194,7 +167,6 @@ export const theme = createMuiTheme({
       },
     },
 
-    // Input
     MuiOutlinedInput: {
       root: {
         padding: '0',
@@ -211,7 +183,6 @@ export const theme = createMuiTheme({
       },
     },
 
-    // LInear Progress
     MuiLinearProgress: {
       root: {
         height: 8,
@@ -227,7 +198,6 @@ export const theme = createMuiTheme({
       },
     },
 
-    // Accordion
     MuiAccordionSummary: {
       root: {
         padding: '0',
