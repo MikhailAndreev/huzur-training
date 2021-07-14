@@ -6,6 +6,7 @@ import { useRootStore } from '../../base/hooks/useRootStore';
 import Loader from '../../components/UI/Loader';
 import CourseCard from '../../components/Course/CourseCard';
 import { ICourseItem } from '../../base/types/SubjectTypes';
+import { SubjectItem } from '../../modules/course/models/SubjectItem';
 
 const CoursesScreen: React.FC = observer(() => {
   const { authStore, courseStore } = useRootStore();
@@ -24,7 +25,7 @@ const CoursesScreen: React.FC = observer(() => {
         <Box display="flex" flexDirection="column" alignItems="center" mb={10}>
           {courseStore.loading && <Loader minHeight={300} />}
           {!courseStore.loading &&
-            courseStore.coursesData?.map((data: ICourseItem) => (
+            courseStore.subjectListData?.map((data: SubjectItem) => (
               <CourseCard key={data.id} data={data} progressPosition="img" fullWidth showProgress={authStore.isAuth} />
             ))}
         </Box>

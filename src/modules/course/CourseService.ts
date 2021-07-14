@@ -1,7 +1,9 @@
 import CourseApiRepository from './repositories/CourseApiRepository';
 import { CourseFactory } from './CourseFactory';
+import { Course } from './models/Course';
+import { SubjectItem } from './models/SubjectItem';
 
-export default class NewsService {
+export default class CourseService {
   courseApi: CourseApiRepository;
   courseFactory: CourseFactory;
 
@@ -10,13 +12,13 @@ export default class NewsService {
     this.courseFactory = new CourseFactory();
   }
 
-  // getAll = async (): Promise<News[]> => {
-  //   const { data } = await this.newsApi.getAll();
-  //   return this.newsFactory.createList<News>(News, data).slice(0, 12); // cut list for demo
-  // };
+  getAll = async (): Promise<SubjectItem[]> => {
+    const data = await this.courseApi.getAll();
+    return this.courseFactory.createList<SubjectItem>(SubjectItem, data);
+  };
 
-  // getOne = async (id: number): Promise<News> => {
-  //   const { data } = await this.newsApi.getOne(id);
-  //   return this.newsFactory.create<News>(News, data);
-  // };
+  getOne = async (id: number): Promise<Course> => {
+    const data = await this.courseApi.getOne(id);
+    return this.courseFactory.create<Course>(Course, data);
+  };
 }

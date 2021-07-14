@@ -1,42 +1,49 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, runInAction } from 'mobx';
 
-import { userCourses } from '../../mock/coursesMockData';
-import { ICourseItem, ISubjectData, ISubjectItem } from '../../base/types/SubjectTypes';
-import { subjectData } from '../../mock/subjectData';
 import { Nullable } from '../../base/types/BaseTypes';
+import CourseService from './CourseService';
+import { Course } from './models/Course';
+import { SubjectItem } from './models/SubjectItem';
 
 export class CourseStore {
   loading = false;
 
-  coursesData: Nullable<ICourseItem[]> = null;
-  subjectData: Nullable<ISubjectData> = null;
+  subjectListData: Nullable<SubjectItem[]> = null;
+  subjectData: Nullable<Course> = null;
+
+  private courseService: CourseService;
 
   constructor() {
     makeAutoObservable(this);
+    this.courseService = new CourseService();
   }
 
   getCoursesData = () => {
     this.setLoading(true);
-    setTimeout(() => {
-      this.setCoursesData(userCourses);
-      this.setLoading(false);
-    }, 1500);
+
+    this.courseService
+      .getAll()
+      .then(data => {
+        runInAction(() => {
+          this.subjectListData = data;
+        });
+      })
+      .catch(error => {})
+      .finally(() => this.setLoading(false));
   };
 
-  getSubjectData = () => {
+  getSubjectData = (courseId: number) => {
     this.setLoading(true);
-    setTimeout(() => {
-      this.setSubjectData(subjectData);
-      this.setLoading(false);
-    }, 1500);
-  };
 
-  setCoursesData = (data: ICourseItem[]) => {
-    this.coursesData = data;
-  };
-
-  setSubjectData = (data: ISubjectData) => {
-    this.subjectData = data;
+    this.courseService
+      .getOne(courseId)
+      .then(data => {
+        runInAction(() => {
+          this.subjectData = data;
+        });
+      })
+      .catch(error => {})
+      .finally(() => this.setLoading(false));
   };
 
   setLoading = (val: boolean) => {

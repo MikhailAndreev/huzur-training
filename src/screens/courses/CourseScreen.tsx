@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Container, Typography, Box, Button } from '@material-ui/core';
 import { observer } from 'mobx-react';
+import { useLocation, useParams } from 'react-router-dom';
 
 import { useRootStore } from '../../base/hooks/useRootStore';
 import Loader from '../../components/UI/Loader';
@@ -11,11 +12,11 @@ import { useAllMQ } from '../../base/hooks/useAllMQ';
 
 const CourseScreen: React.FC = observer(() => {
   const { authStore, courseStore } = useRootStore();
-  const { isLG, isSM } = useAllMQ();
+  const { isSM } = useAllMQ();
+  const params: any = useParams();
 
-  // Effects
   useEffect(() => {
-    courseStore.getSubjectData();
+    courseStore.getSubjectData(params.id);
   }, []);
 
   if (courseStore.loading) {
@@ -80,6 +81,7 @@ const CourseScreen: React.FC = observer(() => {
 
           <Box>
             {courseStore.subjectData &&
+              courseStore.subjectData.lessonsList &&
               courseStore.subjectData.lessonsList.map((subject: ISubjectItem, index: number) => (
                 <CourseAccordion
                   key={index}

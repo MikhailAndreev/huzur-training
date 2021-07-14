@@ -1,7 +1,12 @@
 import AbstractModel from '../../../base/AbstractModel';
+import { ISubjectAuthor, ISubjectData, ISubjectItem } from '../../../base/types/SubjectTypes';
 
 export class Course extends AbstractModel {
-  courseData: number | null = null;
+  id: number | null = null;
+  title: string | null = null;
+  description: string | null = null;
+  lessonsList: ISubjectItem[] | null = null;
+  authors: ISubjectAuthor[] | null = null;
 
   constructor(props: any) {
     super();

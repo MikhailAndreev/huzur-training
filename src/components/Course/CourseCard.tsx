@@ -8,9 +8,10 @@ import clsx from 'clsx';
 import { useCommonStyles } from '../../styles/commonStyles';
 import { ICourseItem } from '../../base/types/SubjectTypes';
 import { useAllMQ } from '../../base/hooks/useAllMQ';
+import { SubjectItem } from '../../modules/course/models/SubjectItem';
 
 export interface ICourseCardProps {
-  data: ICourseItem;
+  data: SubjectItem;
   fullWidth?: boolean;
   showProgress?: boolean;
   progressPosition?: 'img' | 'descr';
@@ -29,21 +30,21 @@ const CourseCard: React.FC<ICourseCardProps> = observer(({ data, fullWidth, show
           <Grid container>
             <Grid item className={classes.imgCol}>
               <Box className={classes.cardImgWrapper}>
-                <img src={img} alt="" className={classes.img} />
+                <img src={img ? img : ''} alt="" className={classes.img} />
               </Box>
 
               {showProgress && progressPosition === 'img' && (
                 <Box className={classes.progressWrap}>
                   <Box className={classes.progressBarWrap}>
                     <Typography variant="body1">
-                      {progress.current}/{progress.fullCourse} Пройдено уроков
+                      {progress?.current}/{progress?.fullCourse} Пройдено уроков
                     </Typography>
 
                     <LinearProgress
                       color="secondary"
                       variant="determinate"
                       value={
-                        progress.current || progress.fullCourse ? (progress.current / progress.fullCourse) * 100 : 0
+                        progress?.current || progress?.fullCourse ? (progress?.current / progress?.fullCourse) * 100 : 0
                       }
                     />
                   </Box>
@@ -63,13 +64,15 @@ const CourseCard: React.FC<ICourseCardProps> = observer(({ data, fullWidth, show
                     <Box mb={1}>
                       <Box className={classes.progressBarWrap}>
                         <Typography variant="body1">
-                          {progress.current}/{progress.fullCourse}
+                          {progress?.current}/{progress?.fullCourse}
                         </Typography>
                         <LinearProgress
                           color="secondary"
                           variant="determinate"
                           value={
-                            progress.current || progress.fullCourse ? (progress.current / progress.fullCourse) * 100 : 0
+                            progress?.current || progress?.fullCourse
+                              ? (progress?.current / progress?.fullCourse) * 100
+                              : 0
                           }
                         />
                       </Box>

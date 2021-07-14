@@ -1,4 +1,4 @@
-interface ICourseProgress {
+export interface ICourseProgress {
   fullCourse: number;
   current: number;
 }
