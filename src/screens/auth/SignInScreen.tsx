@@ -8,6 +8,7 @@ import { AuthData } from '../../base/types/AuthTypes';
 import { useRootStore } from '../../base/hooks/useRootStore';
 import { EmailMaskFormat } from '../../components/UI/Form';
 import LoaderButton from '../../components/UI/LoaderButton';
+import PasswordInput from '../../components/UI/PasswordInput';
 
 const SignInScreen: React.FC = observer(() => {
   const { authStore } = useRootStore();
@@ -24,7 +25,7 @@ const SignInScreen: React.FC = observer(() => {
     e.preventDefault();
     authStore.login(values, history);
   };
-  
+
   const handleResetPassword = (e: any) => {
     // action for Reset password
     console.log('reset password');
@@ -67,7 +68,7 @@ const SignInScreen: React.FC = observer(() => {
 
               <Box mb={0.5}>
                 <FormLabel>Пароль</FormLabel>
-                <TextField
+                <PasswordInput
                   fullWidth
                   variant="outlined"
                   type="password"
@@ -116,7 +117,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     maxWidth: '384px',
     padding: '50px 32px 32px 32px',
-    [theme.breakpoints.down('md')]: {},
+    [theme.breakpoints.down('md')]: {
+      border: 'none',
+    },
   },
 }));
 

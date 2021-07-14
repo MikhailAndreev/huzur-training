@@ -9,6 +9,7 @@ import { useRootStore } from '../../base/hooks/useRootStore';
 import { EmailMaskFormat } from '../../components/UI/Form';
 import { useCommonStyles } from '../../styles/commonStyles';
 import LoaderButton from '../../components/UI/LoaderButton';
+import PasswordInput from '../../components/UI/PasswordInput';
 
 const SignUpScreen: React.FC = observer(() => {
   const { authStore } = useRootStore();
@@ -79,7 +80,7 @@ const SignUpScreen: React.FC = observer(() => {
 
               <Box mb={3}>
                 <FormLabel>Пароль</FormLabel>
-                <TextField
+                <PasswordInput
                   fullWidth
                   variant="outlined"
                   type="password"
@@ -89,9 +90,10 @@ const SignUpScreen: React.FC = observer(() => {
                   onChange={handleChange}
                 />
               </Box>
+
               <Box mb={5}>
                 <FormLabel>Повторите пароль</FormLabel>
-                <TextField
+                <PasswordInput
                   fullWidth
                   variant="outlined"
                   type="password"
@@ -146,7 +148,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     maxWidth: '384px',
     padding: '50px 32px 32px 32px',
-    [theme.breakpoints.down('md')]: {},
+    [theme.breakpoints.down('md')]: {
+      border: 'none',
+    },
   },
   policyLink: {
     color: theme.palette.secondary.main,
